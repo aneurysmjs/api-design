@@ -6,7 +6,7 @@ import uiRouter from 'angular-ui-router';
 import angularfire from 'angularfire';
 import ocLazyLoad from 'oclazyload';
 
-let appLibraries = angular.module('support-app.libraries', [
+let appLibraries = angular.module('app.libraries', [
    ngAnimate,
    ngAria,
    ngMessages,

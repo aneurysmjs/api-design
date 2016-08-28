@@ -8,7 +8,7 @@ import components from './components/components';
 import config from './support-app.config';
 import supportApp from './support-app.component';
 
-export default angular.module('support-app', [
+export default angular.module('app', [
       appLibraries.name,
       shared.name,
       components.name
