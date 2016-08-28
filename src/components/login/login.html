@@ -1,0 +1,51 @@
+<section class="login" layout="column" layout-align="space-around center">
+
+   <div class="md-whiteframe-3dp">
+      <md-toolbar>
+         <div class="md-toolbar-tools md-hue-2">
+            <h3>
+               <span>Olgah</span>
+            </h3>
+         </div>
+      </md-toolbar>
+      <md-content class="md-no-momentum" layout-padding>
+         <form novalidate name="loginForm" ng-submit="$ctrl.login()">
+            <md-input-container class="md-icon-float md-block">
+               <!-- Use floating label instead of placeholder -->
+               <label for="email">Email</label>
+               <md-icon md-font-icon="zmdi zmdi-email" class="login__icons animated fadeInLeft"></md-icon>
+               <input id="email"
+                      name="email"
+                      type="email"
+                      ng-model="$ctrl.user.email">
+               <div ng-messages="loginForm.email.$error">
+                  <div ng-message="email">Correo inválido</div>
+               </div>
+
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+               <label for="password">Password</label>
+               <md-icon md-font-icon="zmdi zmdi-key" class="login__icons animated fadeInLeft"></md-icon>
+               <input id="password"
+                      name="password"
+                      ng-model="$ctrl.user.password"
+                      type="password">
+            </md-input-container>
+            <md-button type="submit"
+                       ng-disabled="loginForm.$invalid"
+                       class="md-raised md-primary">
+               Login
+            </md-button>
+
+            <div ng-if="$ctrl.errorMessage">
+               <span ng-bind="$ctrl.errorMessage"></span>
+            </div>
+         </form>
+      </md-content>
+   </div>
+
+   <footer class="login__copyRights">
+      <span>Coco Interactivo All Rights Reserved.</span>
+   </footer>
+
+</section>
