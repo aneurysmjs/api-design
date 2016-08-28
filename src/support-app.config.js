@@ -5,10 +5,10 @@ config.$inject = ['$provide', '$ocLazyLoadProvider', '$stateProvider'];
 function config($provide, $ocLazyLoadProvider, $stateProvider) {
 
    $provide.constant('FIRE_REF', Firebase.initializeApp({
-      apiKey: "AIzaSyD43Dfs7kkYsbm5IQXiJtoUPV8LlIW3bfk",
-      authDomain: "olgah.firebaseapp.com",
-      databaseURL: "https://olgah.firebaseio.com",
-      storageBucket: "firebase-olgah.appspot.com"
+      apiKey: "AIzaSyDwUyJ5sewKQCuIH7I6t6xt4_GXevhyiDU",
+      authDomain: "support-app-e6d70.firebaseapp.com",
+      databaseURL: "https://support-app-e6d70.firebaseio.com",
+      storageBucket: "support-app-e6d70.appspot.com",
    }));
 
    $stateProvider
