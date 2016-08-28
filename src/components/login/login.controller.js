@@ -17,7 +17,7 @@ class LoginController {
          this.user.serial
       ).then(authData => {
          this.authData = authData;
-         //this.$state.go('suport-app.home');
+         this.$state.go('app.home');
       }).catch(({message}) => {
          this.errorMessage = message;
       });

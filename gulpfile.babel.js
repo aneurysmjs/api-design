@@ -17,10 +17,10 @@ let root = 'src';
 let build = 'build';
 
 // helper method for resolving paths
-/*let resolveToClient = glob => {
+let resolveToClient = glob => {
    glob = glob || '';
    return path.join(root, 'amin', glob); // src/{glob}
-};*/
+};
 
 let resolveToComponents = glob => {
    glob = glob || '';
