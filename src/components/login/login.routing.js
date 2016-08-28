@@ -1,5 +1,3 @@
-'use strict';
-
 loginRouting.$inject = ['$urlRouterProvider', '$stateProvider'];
 
 function loginRouting($urlRouterProvider, $stateProvider) {

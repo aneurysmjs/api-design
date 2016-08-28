@@ -1,14 +1,14 @@
 let path = require('path'),
     webpack = require('webpack');
 
-var config = {
+let config = {
    entry: {
       app: ['./src/core/bootstrap.js']
    },
    output: {
       path: __dirname + '/build/',
       filename: 'bundle.js',
-      publicPath: '/olgah/build/',
+      publicPath: '/support/build/',
       libraryTarget: 'umd'
    },
    resolve: {

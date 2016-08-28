@@ -10,23 +10,21 @@ import sync     from 'run-sequence';
 import serve    from 'browser-sync';
 import rename   from 'gulp-rename';
 import template from 'gulp-template';
-import fs       from 'fs';
 import yargs    from 'yargs';
-import lodash   from 'lodash';
 
 let reload = () => serve.reload();
 let root = 'src';
 let build = 'build';
 
 // helper method for resolving paths
-let resolveToClient = (glob) => {
+/*let resolveToClient = glob => {
    glob = glob || '';
-   return path.join(root, 'crm', glob); // client/{glob}
-};
+   return path.join(root, 'amin', glob); // src/{glob}
+};*/
 
-let resolveToComponents = (glob) => {
+let resolveToComponents = glob => {
    glob = glob || '';
-   return path.join(root, 'components', glob); // client/components/{glob}
+   return path.join(root, 'components', glob); // src/components/{glob}
 };
 
 // map of all paths
@@ -37,7 +35,7 @@ let paths = {
       resolveToClient('**/*.html'),
       path.join(root, 'index.html')
    ],
-   entry: path.join(root, 'client/app.js'),
+   entry: path.join(root, 'client/support-app.js'),
    output: root,
    blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**')
 };
@@ -64,17 +62,14 @@ gulp.task('watch', () => {
 });
 
 gulp.task('component', () => {
-   let cap = (val) => {
-      return val.charAt(0).toUpperCase() + val.slice(1);
-   };
 
-   let camelToDashCase = (val) => {
-      return val.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-   };
+   let cap = val => val.charAt(0).toUpperCase() + val.slice(1);
 
-   let name = yargs.argv.name;
-   let parentPath = yargs.argv.parent || '';
-   let destPath = path.join(resolveToComponents(), parentPath, camelToDashCase(name));
+   let camelToDashCase = val => val.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+   let name = yargs.argv.name,
+       parentPath = yargs.argv.parent || '',
+       destPath = path.join(resolveToComponents(), parentPath, camelToDashCase(name));
 
    return gulp.src(paths.blankTemplates)
       .pipe(template({
@@ -86,16 +81,6 @@ gulp.task('component', () => {
          path.basename = path.basename.replace('temp', camelToDashCase(name));
       }))
       .pipe(gulp.dest(destPath));
-});
-
-gulp.task('renameFiles', () => {
-
-   gulp.src(resolveToComponents('**/*.js'))
-      .pipe(rename((path) => {
-         path.extname = ".ts";
-
-      }))
-      .pipe(gulp.dest("src/components"));
 });
 
 gulp.task('default', (done) => {

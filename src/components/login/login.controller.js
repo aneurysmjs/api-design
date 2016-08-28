@@ -18,9 +18,9 @@ class LoginController {
       this.AuthService.$signInWithEmailAndPassword(
          this.user.email,
          this.user.password
-      ).then(authData =>  {
+      ).then(authData => {
          this.authData = authData;
-         this.$state.go('app.dashboard');
+         this.$state.go('suport-app.home');
       }).catch(({message}) => {
          this.errorMessage = message;
       });

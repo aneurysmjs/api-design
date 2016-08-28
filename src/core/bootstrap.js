@@ -1,6 +1,6 @@
 'use strict';
 
 import angular from 'angular';
-import appModule from '../olgah';
+import supportAppModule from '../support-app';
 
-angular.bootstrap(document, [appModule.name], { strictDi: true });
+angular.bootstrap(document, [supportAppModule.name], {strictDi: true});
