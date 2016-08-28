@@ -5,40 +5,35 @@
          <ui-view>
             <form name="loginForm">
                <div class="form-group">
-                  <label for="userEmail">Email address</label>
+                  <label for="userEmail">Email</label>
                   <input type="email"
                          class="form-control"
                          ng-model="$ctrl.user.email"
                          name="userEmail"
                          id="userEmail"
                          placeholder="Email">
-
                </div>
                <span class="text-danger"
                      ng-if="loginForm.userEmail.$error.email">
                   Correo Inválido
                </span>
                <div class="form-group">
-                  <label for="userPassword">Password</label>
-                  <input type="password"
+                  <label for="userPassword">Serial</label>
+                  <input type="text"
                          class="form-control"
-                         ng-model="$ctrl.user.password"
+                         ng-model="$ctrl.user.serial"
                          id="userPassword"
-                         placeholder="Password">
+                         placeholder="Password"
+                         autocomplete="off">
                </div>
-               <button type="button"
-                       ui-sref="login.register"
-                       class="btn btn-default">
-                  Need account?
-               </button>
                <button type="submit"
                        ng-click="$ctrl.login()"
                        ng-disabled="loginForm.$invalid"
                        class="btn btn-default">Login</button>
             </form>
             <div class="bg-danger"
-                 ng-if="$ctrl.error">
-               <span ng-bind="$ctrl.error"></span>
+                 ng-if="$ctrl.errorMessage">
+               <span ng-bind="$ctrl.errorMessage"></span>
             </div>
          </ui-view>
       </div>

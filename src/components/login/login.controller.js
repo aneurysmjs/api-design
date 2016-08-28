@@ -12,15 +12,12 @@ class LoginController {
    }
 
    login() {
-      this.authData = null;
-      this.errorMessage = null;
-
       this.AuthService.$signInWithEmailAndPassword(
          this.user.email,
-         this.user.password
+         this.user.serial
       ).then(authData => {
          this.authData = authData;
-         this.$state.go('suport-app.home');
+         //this.$state.go('suport-app.home');
       }).catch(({message}) => {
          this.errorMessage = message;
       });
