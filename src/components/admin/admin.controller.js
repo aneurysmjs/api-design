@@ -1,8 +1,7 @@
 class AdminController {
 
-  constructor(AuthService, $state) {
-    this.AuthService = AuthService;
-    this.$state = $state;
+  constructor(AdminService) {
+    this.AdminService = AdminService;
   }
 
   $onInit() {
@@ -13,19 +12,13 @@ class AdminController {
   }
 
   login() {
-    this.AuthService.$signInWithEmailAndPassword(
-       this.user.email,
-       this.user.password
-    ).then(authData => {
-      this.authData = authData;
-      this.$state.go('admin.admin-dashboard');
-    }).catch(({message}) => {
-      this.errorMessage = message;
-    });
+    this.AdminService.login(this.user).then(() => {
+
+    }).catch(message => this.errorMessage = message);
   }
 
 }
 
-AdminController.$inject = ['AuthService', '$state'];
+AdminController.$inject = ['AdminService'];
 
 export default AdminController;
