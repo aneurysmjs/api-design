@@ -5,7 +5,7 @@ adminRouting.$inject = ['$stateProvider'];
 function adminRouting($stateProvider) {
 
    $stateProvider
-      .state('app.admin', {
+      .state('admin', {
          url: '/support-admin',
          template: '<admin></admin>',
          resolve: {
