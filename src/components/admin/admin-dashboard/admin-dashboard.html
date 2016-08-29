@@ -1,8 +1,13 @@
-<admin-nav></admin-nav>
+<section>
+  <admin-nav></admin-nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <admin-sidebar></admin-sidebar>
-    <admin-users-table></admin-users-table>
+  <div class="container-fluid">
+    <div class="row">
+      <admin-sidebar></admin-sidebar>
+      <div ui-view class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <admin-users-table></admin-users-table>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>

@@ -19,7 +19,7 @@ function adminRouting($stateProvider) {
          }]
        }
      })
-     .state('admin.admin-dashboard', {
+     .state('admin.dashboard', {
        url: '/dashboard',
        template: '<admin-dashboard></admin-dashboard>',
        resolve: {
@@ -28,7 +28,27 @@ function adminRouting($stateProvider) {
              require.ensure([], () => {
                // load whole module
                let module = require('./admin-dashboard/admin-dashboard').default;
-               $ocLazyLoad.load({name: 'app.admin.admin-dashboard'});
+               $ocLazyLoad.load({name: 'app.admin.dashboard'});
+               resolve(module.component);
+             });
+           });
+         }],
+         currentAuth: ['AuthService', (AuthService) => {
+           // $requireSignIn returns a promise so the resolve waits for it to complete
+           return AuthService.$requireSignIn();
+         }]
+       }
+     })
+     .state('admin.dashboard.users', {
+       url: '/users',
+       template: '<admin-users></admin-users>',
+       resolve: {
+         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
+           return $q((resolve) => {
+             require.ensure([], () => {
+               // load whole module
+               let module = require('./admin-dashboard/admin-users/admin-users').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.users'});
                resolve(module.component);
              });
            });

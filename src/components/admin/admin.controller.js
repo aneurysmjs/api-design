@@ -14,7 +14,7 @@ class AdminController {
 
   login() {
     this.AdminService.login(this.user)
-       .then(authData => this.$state.go('admin.admin-dashboard'))
+       .then(authData => this.$state.go('admin.dashboard'))
        .catch(message => this.errorMessage = message);
   }
 
