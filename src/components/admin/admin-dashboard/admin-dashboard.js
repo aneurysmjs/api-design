@@ -6,7 +6,7 @@ import adminNav from './admin-nav/admin-nav';
 import adminSidebar from './admin-sidebar/admin-sidebar';
 import adminUsersTable from './admin-users-table/admin-users-table';
 
-let adminDashboardModule = angular.module('app.admin-dashboard', [
+let adminDashboardModule = angular.module('app.admin.admin-dashboard', [
     adminNav.name,
     adminSidebar.name,
     adminUsersTable.name

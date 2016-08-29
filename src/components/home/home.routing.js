@@ -32,4 +32,4 @@ function homeRouting($stateProvider) {
       });
 }
 
-export default angular.module('olgah.home.routing', []).config(homeRouting);
+export default angular.module('app.home.routing', []).config(homeRouting);
