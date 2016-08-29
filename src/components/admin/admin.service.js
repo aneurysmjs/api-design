@@ -1,22 +1,21 @@
 class AdminService {
 
-  constructor($q, $state, AuthService, BaseService) {
+  constructor(AuthService, BaseService, $q) {
     this.$q = $q;
-    this.$state = $state;
     this.AuthService = AuthService;
     this.BaseService = BaseService;
   }
 
   login({email, password}) {
     return this.$q((resolve, reject) => {
-      this.AuthService.$signInWithEmailAndPassword(email, password).then(authData => {
-        this.$state.go('admin.admin-dashboard');
-      }).catch(({message}) => reject(message));
+      this.AuthService.$signInWithEmailAndPassword(email, password)
+         .then(authData => resolve(authData))
+         .catch(({message}) => reject(message));
     });
   }
 
 }
 
-AdminService.$inject = ['$q', '$state', 'AuthService', 'BaseService'];
+AdminService.$inject = ['AuthService', 'BaseService', '$q'];
 
 export default AdminService;
