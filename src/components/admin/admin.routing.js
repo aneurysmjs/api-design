@@ -1,5 +1,3 @@
-'use strict';
-
 adminRouting.$inject = ['$stateProvider'];
 
 function adminRouting($stateProvider) {
@@ -25,13 +23,25 @@ function adminRouting($stateProvider) {
        url: '/dashboard',
        template: '<admin-dashboard></admin-dashboard>',
        resolve: {
-         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', ($q, $ocLazyLoad) => {
+         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
            return $q((resolve) => {
              require.ensure([], () => {
                // load whole module
                let module = require('./admin-dashboard/admin-dashboard').default;
                $ocLazyLoad.load({name: 'app.admin.admin-dashboard'});
                resolve(module.component);
+             });
+           });
+         }],
+         adminDashboard: ['$q', 'AuthService', '$state', ($q, AuthService, $state) => {
+           return $q((resolve, reject) => {
+             console.log(AuthService);
+             AuthService.$onAuthStateChanged((user) => {
+               if (user) {
+                 resolve(user);
+               } else {
+                 $state.go('login');
+               }
              });
            });
          }]
