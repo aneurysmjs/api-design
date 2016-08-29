@@ -1,8 +1,7 @@
 class NavigationController {
    
-   constructor($state, $mdSidenav, NavigationService) {
+   constructor($state, NavigationService) {
       this.$state = $state;
-      this.$mdSidenav = $mdSidenav;
       this.NavigationService = NavigationService;
    }
 
@@ -14,12 +13,8 @@ class NavigationController {
       this.$state.go(`app.${state}`);
    }
 
-   openRightMenu() {
-      this.$mdSidenav('right').toggle();
-   };
-   
 }
 
-NavigationController.$inject = ['$state', '$mdSidenav', 'NavigationService'];
+NavigationController.$inject = ['$state', 'NavigationService'];
 
 export default NavigationController;
