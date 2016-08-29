@@ -17,15 +17,9 @@ let root = 'src';
 let build = 'build';
 
 // helper method for resolving paths
-let resolveToClient = glob => {
-   glob = glob || '';
-   return path.join(root, 'amin', glob); // src/{glob}
-};
+let resolveToClient = (glob = '') => path.join(root, 'amin', glob); // src/{glob}
 
-let resolveToComponents = glob => {
-   glob = glob || '';
-   return path.join(root, 'components', glob); // src/components/{glob}
-};
+let resolveToComponents = (glob = '') => path.join(root, 'components', glob); // src/components/{glob}
 
 // map of all paths
 let paths = {
