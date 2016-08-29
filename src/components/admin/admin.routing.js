@@ -33,17 +33,9 @@ function adminRouting($stateProvider) {
              });
            });
          }],
-         adminDashboard: ['$q', 'AuthService', '$state', ($q, AuthService, $state) => {
-           return $q((resolve, reject) => {
-             console.log(AuthService);
-             AuthService.$onAuthStateChanged((user) => {
-               if (user) {
-                 resolve(user);
-               } else {
-                 $state.go('login');
-               }
-             });
-           });
+         currentAuth: ['AuthService', (AuthService) => {
+           // $requireSignIn returns a promise so the resolve waits for it to complete
+           return AuthService.$requireSignIn();
          }]
        }
      });
