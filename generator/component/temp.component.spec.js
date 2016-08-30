@@ -4,7 +4,7 @@ describe('<%= name %> component test', () => {
    'use strict';
 
    let component, scope, label, $componentController;
-   
+
    beforeEach(window.module(<%= name %>Module.name));
 
    beforeEach(inject(($rootScope, _$componentController_) => {
