@@ -5,11 +5,11 @@ class AdminUsersController {
   }
 
   createUser({user}) {
-    this.AdminUsersService.createUser(user)
+    /*this.AdminUsersService.createUser(user)
        .then(auth => {
           console.log(auth);
        })
-       .catch(error => error);
+       .catch(error => error);*/
   }
 }
 

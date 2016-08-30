@@ -58,6 +58,26 @@ function adminRouting($stateProvider) {
            return AuthService.$requireSignIn();
          }]
        }
+     })
+     .state('admin.dashboard.faqs', {
+       url: '/faqs',
+       template: '<admin-faqs></admin-faqs>',
+       resolve: {
+         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
+           return $q((resolve) => {
+             require.ensure([], () => {
+               // load whole module
+               let module = require('./admin-dashboard/admin-faqs/admin-faqs').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.faqs'});
+               resolve(module.component);
+             });
+           });
+         }],
+         currentAuth: ['AuthService', (AuthService) => {
+           // $requireSignIn returns a promise so the resolve waits for it to complete
+           return AuthService.$requireSignIn();
+         }]
+       }
      });
 }
 
