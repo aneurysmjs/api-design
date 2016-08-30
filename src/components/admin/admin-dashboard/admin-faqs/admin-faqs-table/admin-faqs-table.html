@@ -1,0 +1,14 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Pregunta</th>
+    <th>Respuesta</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="faq in $ctrl.faqs track by $index">
+    <th ng-bind="faq.question"></th>
+    <th ng-bind="faq.answer"></th>
+  </tr>
+  </tbody>
+</table>
