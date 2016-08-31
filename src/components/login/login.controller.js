@@ -1,28 +1,26 @@
 import UserModel from './user-model';
 
 class LoginController {
-   
-   constructor(AuthService, $state) {
-      this.AuthService = AuthService;
-      this.$state = $state;
-   }
 
-   $onInit() {
-      this.user = new UserModel();
-   }
+  constructor(AuthService, $state) {
+    this.AuthService = AuthService;
+    this.$state = $state;
+  }
 
-   login() {
-      this.AuthService.$signInWithEmailAndPassword(
-         this.user.email,
-         this.user.serial
-      ).then(authData => {
-         this.authData = authData;
-         this.$state.go('app.home');
-      }).catch(({message}) => {
-         this.errorMessage = message;
-      });
-   }
-   
+  $onInit() {
+    this.user = new UserModel();
+  }
+
+  login() {
+    this.AuthService.$signInAnonymously().then(firebaseUser => {
+      console.log(firebaseUser);
+      this.firebaseUser = firebaseUser;
+      this.$state.go('app.home');
+    }).catch(({message}) => {
+      this.errorMessage = message;
+    });
+  }
+
 }
 
 LoginController.$inject = ['AuthService', '$state'];
