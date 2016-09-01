@@ -7,12 +7,18 @@
 
 <script type="text/ng-template" id="tree_item_renderer.html">
   {{data.name}}
-  <button ng-click="$ctrl.addNode(data)">Add node</button>
-  <button ng-click="$ctrl.deleteNode(data)" ng-show="data.nodes.length > 0">Delete nodes</button>
+  <button ng-click="$ctrl.addNode(data)">
+    <span class="glyphicon glyphicon-plus"></span>
+  </button>
+  <button ng-click="$ctrl.deleteNode(data)"
+          >
+      <span class="glyphicon glyphicon-trash"></span>
+  </button>
+  <!--<button ng-show="data.nodes.length > 0"
+          ng-click="$ctrl.deleteCurrentNode(data)">X</button>-->
   <ul>
     <li ng-repeat="data in data.nodes"
         ng-include="'tree_item_renderer.html'"></li>
-    <button ng-show="data.nodes.length > 0"
-          ng-click="$ctrl.deleteCurrentNode(data)">X</button>
+
   </ul>
 </script>
