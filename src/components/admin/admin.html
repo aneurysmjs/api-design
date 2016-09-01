@@ -1,46 +1,49 @@
-<section>
-  <ui-view>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <form name="loginForm">
-          <div class="form-group">
-            <label for="userEmail">Email</label>
-            <input type="email"
-                   class="form-control"
-                   ng-model="$ctrl.user.email"
-                   name="userEmail"
-                   id="userEmail"
-                   placeholder="Email">
-          </div>
-          <span class="text-danger"
-                ng-if="loginForm.userEmail.$error.email">
-                  Correo Inválido
-               </span>
-          <div class="form-group">
-            <label for="userPassword">Contraseña</label>
-            <input type="password"
-                   class="form-control"
-                   ng-model="$ctrl.user.password"
-                   name="userPassword"
-                   id="userPassword"
-                   placeholder="Password"
-                   autocomplete="off">
-          </div>
-          <button type="submit"
-                  ng-click="$ctrl.login()"
-                  ng-disabled="loginForm.$invalid"
-                  class="btn btn-default">Login
-          </button>
-        </form>
-        <div class="bg-danger"
-             ng-if="$ctrl.errorMessage">
-          <span ng-bind="$ctrl.errorMessage"></span>
-        </div>
+<ui-view>
+  <section class="admin">
 
+    <header class="page-header">
+      <h1>Softpymes <small>App de Soporte</small></h1>
+    </header>
+
+    <form name="adminForm">
+      <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="email"
+               class="form-control"
+               ng-model="$ctrl.user.email"
+               name="userEmail"
+               id="userEmail"
+               placeholder="Email">
       </div>
-      <div class="col-md-3"></div>
-    </div>
-  </ui-view>
-  <!--<p ng-if="$ctrl.message">Message: <strong>{{ $ctrl.message }}</strong></p>-->
-</section>
+      <span class="text-danger"
+            ng-if="loginForm.userEmail.$error.email">
+        Correo Inválido
+      </span>
+      <div class="form-group">
+        <label for="userPassword">Contraseña</label>
+        <input type="password"
+               class="form-control"
+               ng-model="$ctrl.user.password"
+               name="userPassword"
+               id="userPassword"
+               placeholder="Password"
+               autocomplete="off">
+      </div>
+      <button type="submit"
+              ng-click="$ctrl.login()"
+              ng-disabled="loginForm.$invalid"
+              class="btn btn-default">Login
+      </button>
+      <div class="bg-danger"
+           ng-if="$ctrl.errorMessage">
+        <span ng-bind="$ctrl.errorMessage"></span>
+      </div>
+    </form>
+    <!--<p ng-if="$ctrl.message">Message: <strong>{{ $ctrl.message }}</strong></p>-->
+    <footer class="admin_footer">
+      <p>
+        Softpymes 2016, Derechos Reservados
+      </p>
+    </footer>
+  </section>
+</ui-view>
