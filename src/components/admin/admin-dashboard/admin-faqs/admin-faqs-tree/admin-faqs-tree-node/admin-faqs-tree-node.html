@@ -1,12 +1,16 @@
 <aside>
-  {{$ctrl.item.name}}
-  <button ng-click="$ctrl.addItem($ctrl.item)">
-    <span class="glyphicon glyphicon-plus"></span>
-  </button>
-  <button ng-click="$ctrl.deleteItem($ctrl.item)"
-          ng-show="$ctrl.item.nodes.length > 0">
-    <span class="glyphicon glyphicon-trash"></span>
-  </button>
+  <header>
+    <h3 ng-bind="$ctrl.item.name"></h3>
+  </header>
+
+  <span ng-click="$ctrl.addItem($ctrl.item)"
+        class="glyphicon glyphicon-plus">
+  </span>
+
+  <span ng-click="$ctrl.deleteItem($ctrl.item)"
+        ng-show="$ctrl.item.nodes.length > 0"
+        class="glyphicon glyphicon-trash">
+  </span>
 
   <ul class="adminFaqs_data">
     <admin-faqs-tree-node item="data"

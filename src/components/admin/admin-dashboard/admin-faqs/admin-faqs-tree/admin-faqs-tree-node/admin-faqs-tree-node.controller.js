@@ -3,6 +3,18 @@ class AdminFaqsTreeNodeController {
   constructor(EventEmitter) {
     this.EventEmitter = EventEmitter;
   }
+  
+  $onInit() {
+
+  }
+  
+  $onChanges(changes) {
+
+    if (changes.item) {
+      //this.item = Object.assign({}, changes.item.currentValue);
+    }
+
+  }
 
   addItem(data) {
     let item = data.hasOwnProperty('item') ? data.item : data;
