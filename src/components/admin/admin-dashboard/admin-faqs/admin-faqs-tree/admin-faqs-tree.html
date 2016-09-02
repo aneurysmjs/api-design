@@ -1,24 +1,9 @@
 <aside>
-  <pre>{{$ctrl.tree | json}}</pre>
-  <ul>
-    <li ng-repeat="data in $ctrl.tree" ng-include="'tree_item_renderer.html'"></li>
+  <ul class="adminFaqs_items">
+    <admin-faqs-tree-node item="data"
+                          ng-repeat="data in $ctrl.tree"
+                          on-add="$ctrl.addNode($event)"
+                          on-delete="$ctrl.deleteNode($event)">
+    </admin-faqs-tree-node>
   </ul>
 </aside>
-
-<script type="text/ng-template" id="tree_item_renderer.html">
-  {{data.name}}
-  <button ng-click="$ctrl.addNode(data)">
-    <span class="glyphicon glyphicon-plus"></span>
-  </button>
-  <button ng-click="$ctrl.deleteNode(data)"
-          >
-      <span class="glyphicon glyphicon-trash"></span>
-  </button>
-  <!--<button ng-show="data.nodes.length > 0"
-          ng-click="$ctrl.deleteCurrentNode(data)">X</button>-->
-  <ul>
-    <li ng-repeat="data in data.nodes"
-        ng-include="'tree_item_renderer.html'"></li>
-
-  </ul>
-</script>

@@ -8,17 +8,16 @@ class AdminFaqsTreeController {
     this.tree = [{name: 'Node', nodes: []}];
   }
 
-  addNode(data) {
+  addNode({item}) {
+    let post = item.nodes.length + 1,
+       newName = `${item.name}-${post}`;
 
-    let post = data.nodes.length + 1,
-       newName = `${data.name}-${post}`;
-
-    data.nodes = [...data.nodes, {name: newName, nodes: []}];
+    item.nodes = [...item.nodes, {name: newName, nodes: []}];
 
   }
 
-  deleteNode(data) {
-    data.nodes = [];
+  deleteNode({item}) {
+    item.nodes = [];
   }
 
   deleteCurrentNode(data) {
