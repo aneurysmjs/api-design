@@ -3,4 +3,7 @@
   <admin-faqs-form on-save="$ctrl.createFaq($event)"></admin-faqs-form>
   <!--<admin-faqs-table faqs="$ctrl.faqs"></admin-faqs-table>-->
 
+  <textarea ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.tinymceModel"></textarea>
+  <button ng-click="$ctrl.getContent()">Get content</button>
+  <button ng-click="$ctrl.setContent()">Set content</button>
 </section>

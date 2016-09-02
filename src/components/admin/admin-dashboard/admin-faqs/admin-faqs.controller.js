@@ -6,13 +6,26 @@ class AdminFaqsController {
   }
 
   $onInit() {
-    this.faqs = this.AdminFaqsService
+    this.faqs = this.AdminFaqsService;
+    this.tinymceModel = 'Initial content';
+    this.tinymceOptions = {
+      plugins: 'link image code',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+    };
   }
 
   createFaq({faq}) {
     this.AdminFaqsService.$add(faq).then(response => {
       console.log(response);
     })
+  }
+
+  getContent() {
+    console.log('Editor content:', this.tinymceModel);
+  }
+
+  setContent() {
+    this.tinymceModel = 'Time: ' + (new Date());
   }
 
 }

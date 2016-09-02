@@ -2,10 +2,12 @@
 
 import EventEmitterProvider from './providers/event-emitter.provider';
 import BaseServiceProvider from './providers/base-service.provider';
-import Services from './services/services';
+import services from './services/services';
+import directives from './directives/directives';
 
 export default angular.module('app.shared', [
-      Services.name
+      services.name,
+      directives.name
    ])
    .provider('EventEmitter', EventEmitterProvider)
    .provider('BaseService', BaseServiceProvider);
