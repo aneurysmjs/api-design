@@ -16,4 +16,9 @@
            ng-model="$ctrl.faq.answer">
   </div>
   <button type="submit" class="btn btn-default">Guardar</button>
+
+  <textarea ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.tinymceModel"></textarea>
+  <button ng-click="$ctrl.getContent()">Get content</button>
+  <button ng-click="$ctrl.setContent()">Set content</button>
 </form>
+

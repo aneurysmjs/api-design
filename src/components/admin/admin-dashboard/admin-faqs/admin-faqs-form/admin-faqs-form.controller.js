@@ -7,8 +7,29 @@ class AdminFaqsFormController {
     this.faq = new AdminFaqsModel();
   }
 
+  $onInit() {
+    this.tinymceModel = 'Initial content';
+    this.tinymceOptions = {
+      theme: "modern",
+      plugins: 'link image code',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
+      file_browser_callback: (field_name, url, type, win) => {
+        win.document.getElementById(field_name).value = 'my browser value';
+      },
+      file_picker_types: 'file image media'
+    };
+  }
+
   createFaq() {
     this.onSave(this.EventEmitter({faq: this.faq}));
+  }
+
+  getContent() {
+    console.log('Editor content:', this.tinymceModel);
+  }
+
+  setContent() {
+    this.tinymceModel = 'Time: ' + (new Date());
   }
 
 }
