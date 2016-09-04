@@ -12,7 +12,7 @@ class AdminFaqsController {
   }
 
   createFaq({faq}) {
-    this.AdminFaqsService.$add(faq).then(response => {
+    this.faqs.$add(faq).then(response => {
       console.log(response);
     });
   }
@@ -24,7 +24,11 @@ class AdminFaqsController {
   updateFaq({question}) {
     console.log('question');
     console.log(question);
-    this.AdminFaqsService.$save(question)
+    let index = this.faqs.$indexFor(question.$id);
+    console.log('index');
+    console.log(index);
+
+    this.faqs.$save(question)
        .then(response => console.log(response))
        .catch(reason => console.log(reason));
   }

@@ -13,6 +13,11 @@
     <li ng-repeat="question in $ctrl.questionTree track by $index"
         ng-click="$ctrl.editNode(question)"
         class="list-group-item">
+       <span ng-click="$ctrl.deleteItem($ctrl.item)"
+             ng-show="$ctrl.item.nodes.length > 0"
+             class="glyphicon glyphicon-trash">
+       </span>
+
       <article ng-bind-html="question.answer"></article>
     </li>
   </ul>
