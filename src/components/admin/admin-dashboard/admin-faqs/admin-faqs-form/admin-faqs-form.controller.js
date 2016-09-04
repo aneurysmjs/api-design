@@ -24,6 +24,7 @@ class AdminFaqsFormController {
 
   createFaq() {
     this.onSave(this.EventEmitter({faq: this.faq}));
+    this.faq = {};
   }
 
   getContent() {
