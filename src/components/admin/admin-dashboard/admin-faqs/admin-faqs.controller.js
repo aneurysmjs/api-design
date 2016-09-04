@@ -14,6 +14,11 @@ class AdminFaqsController {
       console.log(response);
     });
   }
+  
+  editQuestion({question}) {
+    console.log('question');
+    console.log(question);
+  }
 
 }
 

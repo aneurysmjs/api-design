@@ -1,7 +1,8 @@
 class AdminFaqsTreeController {
 
-  constructor(AdminFaqsTreeService) {
+  constructor(AdminFaqsTreeService, EventEmitter) {
     this.AdminFaqsTreeService = AdminFaqsTreeService;
+    this.EventEmitter = EventEmitter;
   }
 
   $onInit() {
@@ -21,8 +22,12 @@ class AdminFaqsTreeController {
 
   }
 
+  editNode(question) {
+    this.onEdit(this.EventEmitter({question}));
+  }
+
 }
 
-AdminFaqsTreeController.$inject = ['AdminFaqsTreeService'];
+AdminFaqsTreeController.$inject = ['AdminFaqsTreeService', 'EventEmitter'];
 
 export default AdminFaqsTreeController;

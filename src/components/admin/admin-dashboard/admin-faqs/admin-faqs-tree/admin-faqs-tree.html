@@ -10,7 +10,9 @@
   <pre ng-bind="$ctrl.questionTree | json"></pre>
 
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="question in $ctrl.questionTree track by $index">
+    <li ng-repeat="question in $ctrl.questionTree track by $index"
+        ng-click="$ctrl.editNode(question)"
+        class="list-group-item">
       <article ng-bind-html="question.answer"></article>
     </li>
   </ul>
