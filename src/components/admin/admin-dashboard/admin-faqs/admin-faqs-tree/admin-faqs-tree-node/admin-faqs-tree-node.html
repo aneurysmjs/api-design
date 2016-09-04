@@ -1,24 +1,22 @@
-<aside>
-  <header>
-    <h3 ng-bind="$ctrl.item.name"></h3>
+<aside class="adminFaqsTreeNode">
+  <header class="adminFaqsTreeNode_header">
+    <h3 ng-bind="$ctrl.item.name" content-editor></h3>
+    <span ng-click="$ctrl.addItem($ctrl.item)"
+          class="glyphicon glyphicon-plus">
+    </span>
+    <span ng-click="$ctrl.deleteItem($ctrl.item)"
+          ng-show="$ctrl.item.nodes.length > 0"
+          class="glyphicon glyphicon-trash">
+  </span>
   </header>
 
-  <span ng-click="$ctrl.addItem($ctrl.item)"
-        class="glyphicon glyphicon-plus">
-  </span>
-
-  <span ng-click="$ctrl.deleteItem($ctrl.item)"
-        ng-show="$ctrl.item.nodes.length > 0"
-        class="glyphicon glyphicon-trash">
-  </span>
-
-  <ul class="adminFaqs_data">
+  <ul class="adminFaqsTreeNode_data">
     <li ng-repeat="data in $ctrl.item.nodes">
       <admin-faqs-tree-node item="data"
                             on-add="$ctrl.addItem($event)"
                             on-delete="$ctrl.deleteItem($event)">
       </admin-faqs-tree-node>
     </li>
-
   </ul>
+
 </aside>

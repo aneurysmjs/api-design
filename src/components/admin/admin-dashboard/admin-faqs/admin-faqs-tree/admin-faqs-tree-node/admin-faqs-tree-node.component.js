@@ -1,3 +1,4 @@
+import './admin-faqs-tree-node.styl';
 import template from './admin-faqs-tree-node.html';
 import controller from './admin-faqs-tree-node.controller';
 
