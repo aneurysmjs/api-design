@@ -1,11 +1,13 @@
+import faqModel from './admin-faqs.model';
+
 class AdminFaqsController {
 
   constructor(AdminFaqsService) {
-    console.log(AdminFaqsService);
     this.AdminFaqsService = AdminFaqsService;
   }
 
   $onInit() {
+    this.faq = new faqModel();
     this.faqs = this.AdminFaqsService;
   }
 

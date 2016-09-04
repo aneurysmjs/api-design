@@ -1,10 +1,7 @@
-import AdminFaqsModel from './admin-faqs.model';
-
 class AdminFaqsFormController {
 
   constructor(EventEmitter) {
     this.EventEmitter = EventEmitter;
-    this.faq = new AdminFaqsModel();
   }
 
   $onInit() {
@@ -18,6 +15,11 @@ class AdminFaqsFormController {
       },
       file_picker_types: 'file image media'
     };
+  }
+
+  $onChanges(changes) {
+    console.log('changes');
+    console.log(changes);
   }
 
   createFaq() {
