@@ -1,5 +1,3 @@
-'use strict';
-
 import angular from 'angular';
 import appLibraries from './support-app.libraries.js';
 import shared from './shared/shared';

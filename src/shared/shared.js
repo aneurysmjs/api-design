@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 import EventEmitterProvider from './providers/event-emitter.provider';
 import BaseServiceProvider from './providers/base-service.provider';

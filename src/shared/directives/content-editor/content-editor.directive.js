@@ -7,7 +7,7 @@ class ContentEditor {
   link($scope, $element, $attrs) {
     $element.on('dblclick', e => {
       //$element.attr('contentEditable', true);
-    })
+    });
   }
 
 }

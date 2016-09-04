@@ -12,7 +12,7 @@ class AdminFaqsController {
   createFaq({faq}) {
     this.AdminFaqsService.$add(faq).then(response => {
       console.log(response);
-    })
+    });
   }
 
 }

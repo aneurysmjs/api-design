@@ -1,4 +1,3 @@
-'use strict';
 import angular from 'angular';
 
 import navigation from './navigation/navigation';

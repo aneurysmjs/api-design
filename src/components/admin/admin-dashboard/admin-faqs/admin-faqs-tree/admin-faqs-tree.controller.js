@@ -6,6 +6,7 @@ class AdminFaqsTreeController {
 
   $onInit() {
     this.tree = [{name: 'Node', nodes: []}];
+    this.deepLimit = 3;
   }
 
   addNode({item}) {

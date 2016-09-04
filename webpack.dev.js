@@ -19,7 +19,7 @@ let config = {
       root: __dirname + '/src/'
    },
    module: {
-      noParse: [],
+      preLoaders: [{test: /\.js$/, loader: 'jshint-loader', exclude: /node_modules/}],
       loaders: [
          {test: /\.html$/, loader: 'raw'},
          {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},

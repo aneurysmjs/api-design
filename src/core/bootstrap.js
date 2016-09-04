@@ -1,5 +1,3 @@
-'use strict';
-
 import angular from 'angular';
 import supportAppModule from '../support-app';
 

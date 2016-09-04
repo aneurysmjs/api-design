@@ -1,5 +1,3 @@
-'use strict';
-
 homeRouting.$inject = ['$stateProvider'];
 
 function homeRouting($stateProvider) {
