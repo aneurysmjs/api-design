@@ -1,9 +1,11 @@
 <aside>
   <ul class="adminFaqs_items">
-    <admin-faqs-tree-node item="data"
-                          ng-repeat="data in $ctrl.tree"
-                          on-add="$ctrl.addNode($event)"
-                          on-delete="$ctrl.deleteNode($event)">
-    </admin-faqs-tree-node>
+    <li ng-repeat="data in $ctrl.tree">
+      <admin-faqs-tree-node item="data"
+                            on-add="$ctrl.addNode($event)"
+                            on-delete="$ctrl.deleteNode($event)">
+      </admin-faqs-tree-node>
+    </li>
   </ul>
+  <pre ng-bind="$ctrl.tree | json"></pre>
 </aside>

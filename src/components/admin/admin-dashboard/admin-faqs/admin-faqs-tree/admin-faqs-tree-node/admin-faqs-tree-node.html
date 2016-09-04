@@ -13,10 +13,12 @@
   </span>
 
   <ul class="adminFaqs_data">
-    <admin-faqs-tree-node item="data"
-                          ng-repeat="data in $ctrl.item.nodes"
-                          on-add="$ctrl.addItem($event)"
-                          on-delete="$ctrl.deleteItem($event)">
-    </admin-faqs-tree-node>
+    <li ng-repeat="data in $ctrl.item.nodes">
+      <admin-faqs-tree-node item="data"
+                            on-add="$ctrl.addItem($event)"
+                            on-delete="$ctrl.deleteItem($event)">
+      </admin-faqs-tree-node>
+    </li>
+
   </ul>
 </aside>

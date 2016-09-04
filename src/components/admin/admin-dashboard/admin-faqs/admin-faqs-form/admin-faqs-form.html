@@ -7,18 +7,20 @@
            name="question"
            ng-model="$ctrl.faq.question">
   </div>
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="answer">Respuesta</label>
     <input type="text"
            class="form-control"
            id="answer"
            name="answer"
            ng-model="$ctrl.faq.answer">
-  </div>
-  <button type="submit" class="btn btn-default">Guardar</button>
+  </div>-->
 
-  <textarea ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.tinymceModel"></textarea>
+  <label for="answer">Respuesta</label>
+  <textarea id="answer" ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.tinymceModel"></textarea>
   <button ng-click="$ctrl.getContent()">Get content</button>
   <button ng-click="$ctrl.setContent()">Set content</button>
+  <hr>
+  <button type="submit" class="btn btn-default">Guardar</button>
 </form>
 
