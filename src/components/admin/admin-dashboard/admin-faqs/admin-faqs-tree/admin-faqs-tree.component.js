@@ -4,7 +4,9 @@ import controller from './admin-faqs-tree.controller';
 let adminFaqsTreeComponent = {
   template,
   controller,
-  bindings: {}
+  bindings: {
+    questionTree: '<'
+  }
 };
 
 export default adminFaqsTreeComponent;

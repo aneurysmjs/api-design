@@ -25,11 +25,11 @@ class AdminFaqsFormController {
   }
 
   getContent() {
-    console.log('Editor content:', this.tinymceModel);
+    console.log('Editor content:', this.faq.answer);
   }
 
   setContent() {
-    this.tinymceModel = 'Time: ' + (new Date());
+    this.faq.answer = 'Time: ' + (new Date());
   }
 
 }
