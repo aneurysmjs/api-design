@@ -18,8 +18,15 @@ class AdminFaqsController {
   }
   
   editQuestion({question}) {
+    this.faq = question;
+  }
+
+  updateFaq({question}) {
     console.log('question');
     console.log(question);
+    this.AdminFaqsService.$save(question)
+       .then(response => console.log(response))
+       .catch(reason => console.log(reason));
   }
 
 }

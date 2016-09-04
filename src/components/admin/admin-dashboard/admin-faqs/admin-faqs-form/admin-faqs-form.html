@@ -1,11 +1,12 @@
-<form name="adminFaqs" ng-submit="$ctrl.createFaq()">
+<form name="adminFaqs" ng-submit="$ctrl.saveFaq()">
+  <pre>{{$ctrl.question | json}}</pre>
   <div class="form-group">
     <label for="question">Pregunta</label>
     <input type="text"
            class="form-control"
            id="question"
            name="question"
-           ng-model="$ctrl.faq.title">
+           ng-model="$ctrl.question.title">
   </div>
   <!--<div class="form-group">
     <label for="answer">Respuesta</label>
@@ -13,14 +14,16 @@
            class="form-control"
            id="answer"
            name="answer"
-           ng-model="$ctrl.faq.answer">
+           ng-model="$ctrl.question.answer">
   </div>-->
 
   <label for="answer">Respuesta</label>
-  <textarea id="answer" ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.faq.answer"></textarea>
+  <textarea id="answer" ui-tinymce="$ctrl.tinymceOptions" ng-model="$ctrl.question.answer"></textarea>
   <button ng-click="$ctrl.getContent()">Get content</button>
   <button ng-click="$ctrl.setContent()">Set content</button>
   <hr>
-  <button type="submit" class="btn btn-default">Guardar</button>
+  <button type="submit"
+          class="btn btn-default"
+          ng-bind="$ctrl.buttonText"></button>
 </form>
 

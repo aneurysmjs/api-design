@@ -6,6 +6,7 @@ let adminFaqsFormComponent = {
   controller,
   bindings: {
     onSave: '&',
+    onUpdate: '&',
     question: '<'
   }
 };
