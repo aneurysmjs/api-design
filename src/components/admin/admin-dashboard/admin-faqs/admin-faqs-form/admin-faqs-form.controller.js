@@ -20,10 +20,10 @@ class AdminFaqsFormController {
   }
 
   $onChanges(changes) {
-    /*if (changes.question) {
-      this.question = Object.assign({}, changes.question.currentValue);
+    if (changes.question) {
+      //this.question = Object.assign({}, changes.question.currentValue);
       this.buttonText = 'Actualizar';
-    }*/
+    }
   }
 
   saveFaq() {
