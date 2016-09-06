@@ -5,7 +5,8 @@ let adminFaqsTreeComponent = {
   template,
   controller,
   bindings: {
-    questionTree: '<'
+    questionTree: '<',
+    onEdit: '&'
   }
 };
 

@@ -1,6 +1,6 @@
 class AdminFaqsModel {
   constructor() {
-    this.question = '';
+    this.title = '';
     this.answer = '';
   }
 }

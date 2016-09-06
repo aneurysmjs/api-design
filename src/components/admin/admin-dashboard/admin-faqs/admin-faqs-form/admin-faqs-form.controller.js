@@ -1,14 +1,10 @@
-import AdminFaqsModel from './admin-faqs.model';
-
 class AdminFaqsFormController {
 
   constructor(EventEmitter) {
     this.EventEmitter = EventEmitter;
-    this.faq = new AdminFaqsModel();
   }
 
   $onInit() {
-    this.tinymceModel = 'Initial content';
     this.tinymceOptions = {
       theme: "modern",
       plugins: 'link image code',
@@ -18,18 +14,33 @@ class AdminFaqsFormController {
       },
       file_picker_types: 'file image media'
     };
+
+    this.buttonText = 'Guardar';
+
   }
 
-  createFaq() {
-    this.onSave(this.EventEmitter({faq: this.faq}));
+  $onChanges(changes) {
+    if (changes.question) {
+      //this.question = Object.assign({}, changes.question.currentValue);
+      this.buttonText = 'Actualizar';
+    }
+  }
+
+  saveFaq() {
+    if (this.question.hasOwnProperty('$id')) {
+      this.onUpdate(this.EventEmitter({question: this.question}));
+    } else {
+      this.onSave(this.EventEmitter({faq: this.question}));
+      this.question = {};
+    }
   }
 
   getContent() {
-    console.log('Editor content:', this.faq.answer);
+    console.log('Editor content:', this.question.answer);
   }
 
   setContent() {
-    this.faq.answer = 'Time: ' + (new Date());
+    this.question.answer = 'Time: ' + (new Date());
   }
 
 }
