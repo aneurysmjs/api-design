@@ -1,7 +1,7 @@
 class AdminFaqsService {
    
    constructor($firebaseArray, $firebaseRef) {
-      return $firebaseArray($firebaseRef.faqs);
+      this.faqs = $firebaseArray($firebaseRef.faqs);
    }
    
 }

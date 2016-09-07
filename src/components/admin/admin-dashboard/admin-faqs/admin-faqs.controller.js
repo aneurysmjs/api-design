@@ -8,7 +8,7 @@ class AdminFaqsController {
 
   $onInit() {
     this.faq = new faqModel();
-    this.faqs = this.AdminFaqsService;
+    this.AdminFaqsService.faqs.$loaded().then(faqs => this.faqs = faqs);
   }
 
   createFaq({faq}) {
