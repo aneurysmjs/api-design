@@ -6,7 +6,9 @@ import './admin-faqs.styl';
 let adminFaqsComponent = {
   template,
   controller,
-  bindings: {}
+  bindings: {
+    faqs: '<'
+  }
 };
 
 export default adminFaqsComponent;

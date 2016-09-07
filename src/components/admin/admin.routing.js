@@ -61,7 +61,7 @@ function adminRouting($stateProvider) {
      })
      .state('admin.dashboard.faqs', {
        url: '/faqs',
-       template: '<admin-faqs></admin-faqs>',
+       template: `<admin-faqs faqs="$resolve.faqs"></admin-faqs>`,
        resolve: {
          loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
            return $q((resolve) => {
@@ -76,6 +76,9 @@ function adminRouting($stateProvider) {
          currentAuth: ['AuthService', (AuthService) => {
            // $requireSignIn returns a promise so the resolve waits for it to complete
            return AuthService.$requireSignIn();
+         }],
+         faqs: ['$firebaseArray', '$firebaseRef', ($firebaseArray, $firebaseRef) => {
+           return $firebaseArray($firebaseRef.faqs).$loaded();
          }]
        }
      });

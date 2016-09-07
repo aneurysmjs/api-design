@@ -1,11 +1,11 @@
 class AdminFaqsService {
    
-   constructor($firebaseArray, $firebaseRef) {
-      this.faqs = $firebaseArray($firebaseRef.faqs);
+   constructor() {
+
    }
    
 }
 
-AdminFaqsService.$inject = ['$firebaseArray', '$firebaseRef'];
+AdminFaqsService.$inject = [];
 
 export default AdminFaqsService;
