@@ -1,7 +1,8 @@
 class AdminFaqsFormController {
 
-  constructor(EventEmitter) {
+  constructor(EventEmitter, AdminFaqsFormService) {
     this.EventEmitter = EventEmitter;
+    this.AdminFaqsFormService = AdminFaqsFormService;
   }
 
   $onInit() {
@@ -27,12 +28,13 @@ class AdminFaqsFormController {
   }
 
   saveFaq() {
-    if (this.question.hasOwnProperty('$id')) {
-      this.onUpdate(this.EventEmitter({question: this.question}));
-    } else {
-      this.onSave(this.EventEmitter({faq: this.question}));
+
+    this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
+      // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
+      this[action](this.EventEmitter({question: this.question}));
       this.question = {};
-    }
+    });
+
   }
 
   getContent() {
@@ -45,6 +47,6 @@ class AdminFaqsFormController {
 
 }
 
-AdminFaqsFormController.$inject = ['EventEmitter'];
+AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService'];
 
 export default AdminFaqsFormController;
