@@ -14,7 +14,7 @@ class AdminFaqsFormController {
 
   tinyMceOptions() {
 
-    let tinyMceOptions = {
+    return {
       theme: "modern",
       plugins: 'link image code',
       toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
@@ -23,8 +23,6 @@ class AdminFaqsFormController {
       },
       file_picker_types: 'file image media'
     };
-
-    return this.$q.when(tinyMceOptions);
 
   }
 

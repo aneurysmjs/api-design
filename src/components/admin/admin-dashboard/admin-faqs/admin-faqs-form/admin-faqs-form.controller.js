@@ -6,8 +6,8 @@ class AdminFaqsFormController {
   }
 
   $onInit() {
-    this.AdminFaqsFormService.tinyMceOptions()
-       .then(tinyMceOptions => this.tinyMceOptions = tinyMceOptions);
+
+    this.tinymceOptions = this.AdminFaqsFormService.tinyMceOptions();
 
     this.buttonText = 'Guardar';
 
