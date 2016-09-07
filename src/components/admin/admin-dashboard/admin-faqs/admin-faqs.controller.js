@@ -17,17 +17,11 @@ class AdminFaqsController {
     });
   }
   
-  editQuestion({question}) {
+  editFaq({question}) {
     this.faq = question;
   }
 
   updateFaq({question}) {
-    console.log('question');
-    console.log(question);
-    let index = this.faqs.$indexFor(question.$id);
-    console.log('index');
-    console.log(index);
-
     this.faqs.$save(question)
        .then(response => console.log(response))
        .catch(reason => console.log(reason));

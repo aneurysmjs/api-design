@@ -1,4 +1,4 @@
-class AdminController {
+ class AdminController {
 
   constructor(AdminService, $state) {
     this.AdminService = AdminService;
