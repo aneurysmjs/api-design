@@ -6,15 +6,8 @@ class AdminFaqsFormController {
   }
 
   $onInit() {
-    this.tinymceOptions = {
-      theme: "modern",
-      plugins: 'link image code',
-      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
-      file_browser_callback: (field_name, url, type, win) => {
-        win.document.getElementById(field_name).value = 'my browser value';
-      },
-      file_picker_types: 'file image media'
-    };
+    this.AdminFaqsFormService.tinyMceOptions()
+       .then(tinyMceOptions => this.tinyMceOptions = tinyMceOptions);
 
     this.buttonText = 'Guardar';
 
