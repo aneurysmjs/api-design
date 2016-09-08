@@ -1,7 +1,8 @@
 class AdminFaqsFormController {
 
-  constructor($q) {
+  constructor($q, BaseService) {
     this.$q = $q;
+    this.BaseService = BaseService;
   }
 
   saveOrUpdate(question) {
@@ -26,10 +27,35 @@ class AdminFaqsFormController {
 
   }
 
+  uploadFiles(files) {
 
+    files.forEach(file => {
+      // create storage reference
+      let storageRef = this.BaseService.storage().ref(`jeroFiles/${file.name}`);
+      // upload the file
+      let task = storageRef.put(file);
+    });
+
+    /*// update progress bar
+
+    task.on('state_changed',
+       (snapshot) => {
+         let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+       },
+       (error) => {
+
+       },
+       () => {
+
+       }
+    );*/
+
+
+    return this.BaseService.storage();
+  }
 
 }
 
-AdminFaqsFormController.$inject = ['$q'];
+AdminFaqsFormController.$inject = ['$q', 'BaseService'];
 
 export default AdminFaqsFormController;

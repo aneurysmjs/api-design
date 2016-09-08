@@ -24,7 +24,15 @@
            ng-model="$ctrl.question.tags"
            placeholder="Separados por coma.">
   </div>
+  <div class="form-group">
+    <button ngf-select="$ctrl.uploadFiles($files)"
+            multiple
+            accept="image/*">Select Files</button>
+    <progress value="0" max="100" id="uploader">0%</progress>
+  </div>
   <hr>
+
+
 
   <button type="submit"
           class="btn btn-default"

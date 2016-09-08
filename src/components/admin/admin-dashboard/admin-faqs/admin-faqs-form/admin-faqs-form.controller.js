@@ -3,6 +3,7 @@ class AdminFaqsFormController {
   constructor(EventEmitter, AdminFaqsFormService) {
     this.EventEmitter = EventEmitter;
     this.AdminFaqsFormService = AdminFaqsFormService;
+
   }
 
   $onInit() {
@@ -36,6 +37,10 @@ class AdminFaqsFormController {
 
   setContent() {
     this.question.answer = 'Time: ' + (new Date());
+  }
+
+  uploadFiles($files) {
+    this.AdminFaqsFormService.uploadFiles($files);
   }
 
 }
