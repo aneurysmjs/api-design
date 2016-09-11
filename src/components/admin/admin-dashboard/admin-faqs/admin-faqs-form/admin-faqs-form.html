@@ -25,11 +25,14 @@
            placeholder="Separados por coma.">
   </div>
   <div class="form-group">
-    <button ngf-select="$ctrl.uploadFiles($files)"
+    <button ngf-select="$ctrl.setFiles($files)"
             multiple
-            accept="image/*">Select Files</button>
+            accept="image/*">Adjuntar</button>
     <progress value="0" max="100" id="uploader">0%</progress>
   </div>
+  <file-list files="$ctrl.question.files"
+             on-delete="$ctrl.deleteQuestionFile($event)">
+  </file-list>
   <hr>
 
 

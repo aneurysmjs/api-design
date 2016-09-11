@@ -1,4 +1,5 @@
 <aside class="adminFaqsTreeNode">
+  <pre ng-bind="$ctrl.item.nodes.length | json"></pre>
   <header class="adminFaqsTreeNode_header">
     <h3 ng-bind="$ctrl.item.name" content-editor></h3>
     <span ng-click="$ctrl.addItem($ctrl.item)"

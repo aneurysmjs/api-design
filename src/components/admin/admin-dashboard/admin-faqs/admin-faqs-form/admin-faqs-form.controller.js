@@ -22,12 +22,14 @@ class AdminFaqsFormController {
   }
 
   saveFaq() {
+    console.log('this.question');
+    console.log(this.question);
 
-    this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
+    /*this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
       // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
       this[action](this.EventEmitter({question: this.question}));
       this.question = {};
-    });
+    });*/
 
   }
 
@@ -39,8 +41,10 @@ class AdminFaqsFormController {
     this.question.answer = 'Time: ' + (new Date());
   }
 
-  uploadFiles($files) {
-    this.AdminFaqsFormService.uploadFiles($files);
+  setFiles($files) {
+    let files = $files.map(file => file.name);
+    this.question.files = $files;
+    //this.AdminFaqsFormService.uploadFiles($files);
   }
 
 }

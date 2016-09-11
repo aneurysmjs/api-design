@@ -1,0 +1,10 @@
+<ul class="list-group">
+  <li class="list-group-item fileList" ng-repeat="file in $ctrl.files track by $index">
+    <span ng-bind="file.name"></span>
+    <span ng-bind="file.type"></span>
+    <span ng-bind="file.size"></span>
+    <span ng-click="$ctrl.onDelete(file)"
+          class="glyphicon glyphicon-trash">
+     </span>
+  </li>
+</ul>
