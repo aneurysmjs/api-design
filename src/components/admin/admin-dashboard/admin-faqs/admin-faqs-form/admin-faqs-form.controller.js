@@ -47,6 +47,16 @@ class AdminFaqsFormController {
     //this.AdminFaqsFormService.uploadFiles($files);
   }
 
+  deleteQuestionFile({file}) {
+    let index = this.question.files.indexOf(file);
+
+    this.question.files = [
+      ...this.question.files.slice(0, index),
+      ...this.question.files.slice(index + 1)
+    ];
+
+  }
+
 }
 
 AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService'];
