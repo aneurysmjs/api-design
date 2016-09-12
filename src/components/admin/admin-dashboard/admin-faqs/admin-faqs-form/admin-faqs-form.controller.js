@@ -21,21 +21,21 @@ class AdminFaqsFormController {
   }
 
   saveFaq() {
-
     this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
       // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
       this[action](this.EventEmitter({question: this.question}));
       this.question = {};
     });
-
   }
 
-  getContent() {
-    console.log('Editor content:', this.question.answer);
-  }
+  deleteQuestionFile({file}) {
+    let index = this.question.files.indexOf(file);
 
-  setContent() {
-    this.question.answer = 'Time: ' + (new Date());
+    this.question.files = [
+      ...this.question.files.slice(0, index),
+      ...this.question.files.slice(index + 1)
+    ];
+
   }
 
 }

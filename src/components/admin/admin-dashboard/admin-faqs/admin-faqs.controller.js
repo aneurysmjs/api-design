@@ -3,6 +3,7 @@ import faqModel from './admin-faqs.model';
 class AdminFaqsController {
 
   constructor(AdminFaqsService) {
+    this.AdminFaqsService = AdminFaqsService;
   }
 
   $onInit() {
@@ -10,9 +11,15 @@ class AdminFaqsController {
   }
 
   createFaq({question}) {
-    this.faqs.$add(question).then(response => {
-      console.log(response);
-    });
+
+    this.AdminFaqsService.processQuestion(question)
+       .then(questionProcessed => {
+         this.faqs.$add(questionProcessed).then(response => console.log(response));
+       })
+       .catch(reason => {
+
+       });
+
   }
   
   editFaq({question}) {
