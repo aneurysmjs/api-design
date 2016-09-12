@@ -11,13 +11,14 @@ class AdminFaqsController {
   }
 
   createFaq({question}) {
-    if (question.files.length) {
-      this.AdminFaqsService.uploadFiles(question.files);
-    }
 
-    this.faqs.$add(question).then(response => {
-      console.log(response);
-    });
+    this.AdminFaqsService.processQuestion(question)
+       .then(questionProcessed => {
+         this.faqs.$add(questionProcessed).then(response => console.log(response));
+       })
+       .catch(reason => {
+
+       });
 
   }
   

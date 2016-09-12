@@ -28,18 +28,6 @@ class AdminFaqsFormController {
     });
   }
 
-  getContent() {
-    console.log('Editor content:', this.question.answer);
-  }
-
-  setContent() {
-    this.question.answer = 'Time: ' + (new Date());
-  }
-
-  setFiles($files) {
-    this.question.files = $files;
-  }
-
   deleteQuestionFile({file}) {
     let index = this.question.files.indexOf(file);
 
