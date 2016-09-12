@@ -3,7 +3,6 @@ class AdminFaqsFormController {
   constructor(EventEmitter, AdminFaqsFormService) {
     this.EventEmitter = EventEmitter;
     this.AdminFaqsFormService = AdminFaqsFormService;
-
   }
 
   $onInit() {
@@ -22,15 +21,11 @@ class AdminFaqsFormController {
   }
 
   saveFaq() {
-    console.log('this.question');
-    console.log(this.question);
-
-    /*this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
+    this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
       // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
       this[action](this.EventEmitter({question: this.question}));
       this.question = {};
-    });*/
-
+    });
   }
 
   getContent() {
@@ -42,9 +37,7 @@ class AdminFaqsFormController {
   }
 
   setFiles($files) {
-    let files = $files.map(file => file.name);
     this.question.files = $files;
-    //this.AdminFaqsFormService.uploadFiles($files);
   }
 
   deleteQuestionFile({file}) {

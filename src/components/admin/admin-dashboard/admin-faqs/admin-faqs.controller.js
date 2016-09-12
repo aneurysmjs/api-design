@@ -3,6 +3,7 @@ import faqModel from './admin-faqs.model';
 class AdminFaqsController {
 
   constructor(AdminFaqsService) {
+    this.AdminFaqsService = AdminFaqsService;
   }
 
   $onInit() {
@@ -10,9 +11,14 @@ class AdminFaqsController {
   }
 
   createFaq({question}) {
+    if (question.files.length) {
+      this.AdminFaqsService.uploadFiles(question.files);
+    }
+
     this.faqs.$add(question).then(response => {
       console.log(response);
     });
+
   }
   
   editFaq({question}) {

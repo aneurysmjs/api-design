@@ -1,10 +1,24 @@
-<ul class="list-group">
-  <li class="list-group-item fileList" ng-repeat="file in $ctrl.files track by $index">
-    <span ng-bind="file.name"></span>
-    <span ng-bind="file.type"></span>
-    <span ng-bind="file.size"></span>
-    <span ng-click="$ctrl.deleteFile(file)"
-          class="glyphicon glyphicon-trash">
-     </span>
-  </li>
-</ul>
+<aside class="table-responsive" ng-if="$ctrl.files.length">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Tamaño</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="file in $ctrl.files track by $index">
+        <td ng-bind="file.name"></td>
+        <td ng-bind="file.type"></td>
+        <td ng-bind="file.size + ' bytes'"></td>
+        <td>
+           <span ng-click="$ctrl.deleteFile(file)"
+                 class="glyphicon glyphicon-trash">
+            </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>

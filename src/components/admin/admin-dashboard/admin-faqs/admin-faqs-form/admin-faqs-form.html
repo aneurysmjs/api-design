@@ -25,10 +25,21 @@
            placeholder="Separados por coma.">
   </div>
   <div class="form-group">
-    <button ngf-select="$ctrl.setFiles($files)"
+    <button class="btn btn-default"
+            type="button"
+            ngf-select
+            ng-model="$ctrl.question.files"
+            ngf-multiple="true"
+            ngf-accept="'image/*'">
+      Adjuntar
+      <span class="glyphicon glyphicon-paperclip"></span>
+    </button>
+
+    <!--<button ngf-select="$ctrl.setFiles($files)"
             multiple
-            accept="image/*">Adjuntar</button>
-    <progress value="0" max="100" id="uploader">0%</progress>
+            accept="image/*">Adjuntar</button>-->
+
+    <!--<progress value="0" max="100" id="uploader">0%</progress>-->
   </div>
   <file-list files="$ctrl.question.files"
              on-delete="$ctrl.deleteQuestionFile($event)">
@@ -38,7 +49,7 @@
 
 
   <button type="submit"
-          class="btn btn-default"
+          class="btn btn-primary"
           ng-bind="$ctrl.buttonText"></button>
 </form>
 
