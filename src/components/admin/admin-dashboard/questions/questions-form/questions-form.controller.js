@@ -1,15 +1,15 @@
-class AdminFaqsFormController {
+class QuestionsFormController {
 
-  constructor(EventEmitter, AdminFaqsFormService, $window, $timeout) {
+  constructor(EventEmitter, QuestionsFormService, $window, $timeout) {
     this.EventEmitter = EventEmitter;
-    this.AdminFaqsFormService = AdminFaqsFormService;
+    this.QuestionsFormService = QuestionsFormService;
     this.$window = $window;
     this.$timeout = $timeout;
   }
 
   $onInit() {
     this.isError = false;
-    this.tinymceOptions = this.AdminFaqsFormService.tinyMceOptions();
+    this.tinymceOptions = this.QuestionsFormService.tinyMceOptions();
 
     this.buttonText = 'Guardar';
 
@@ -23,7 +23,7 @@ class AdminFaqsFormController {
   }
 
   saveFaq() {
-    this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
+    this.QuestionsFormService.saveOrUpdate(this.question).then(action => {
       // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
       this[action](this.EventEmitter({question: this.question}));
 
@@ -31,14 +31,14 @@ class AdminFaqsFormController {
   }
 
   deleteQuestionFile({file}) {
-    this.AdminFaqsFormService.deleteQuestionFile(this.question.files, file)
+    this.QuestionsFormService.deleteQuestionFile(this.question.files, file)
        .then(files => this.question.files = files)
        .catch(({message}) => this.displayError(message));
 
   }
 
   downloadQuestionFile({file}) {
-    this.AdminFaqsFormService.downloadFile(file).then(url => {
+    this.QuestionsFormService.downloadFile(file).then(url => {
       this.$window.location.href = url;
     });
   }
@@ -49,6 +49,6 @@ class AdminFaqsFormController {
 
 }
 
-AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService', '$window', '$timeout'];
+QuestionsFormController.$inject = ['EventEmitter', 'QuestionsFormService', '$window', '$timeout'];
 
-export default AdminFaqsFormController;
+export default QuestionsFormController;

@@ -1,4 +1,4 @@
-class AdminFaqsFormController {
+class QuestionsFormController {
 
   constructor($q, BaseService) {
     this.$q = $q;
@@ -86,6 +86,6 @@ class AdminFaqsFormController {
 
 }
 
-AdminFaqsFormController.$inject = ['$q', 'BaseService'];
+QuestionsFormController.$inject = ['$q', 'BaseService'];
 
-export default AdminFaqsFormController;
+export default QuestionsFormController;

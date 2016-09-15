@@ -1,9 +1,9 @@
 <section class="questions row">
-  <admin-faqs-form on-save="$ctrl.createQuestion($event)"
-                   on-update="$ctrl.updateQuestion($event)"
-                   question="$ctrl.question"
-                   class="col-sm-9 col-md-6">
-  </admin-faqs-form>
+  <questions-form on-save="$ctrl.createQuestion($event)"
+                  on-update="$ctrl.updateQuestion($event)"
+                  question="$ctrl.question"
+                  class="col-sm-9 col-md-6">
+  </questions-form>
   <admin-faqs-tree question-tree="$ctrl.questions"
                    on-edit="$ctrl.editQuestion($event)"
                    class="col-sm-9 col-md-6" >
