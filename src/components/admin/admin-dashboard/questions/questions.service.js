@@ -1,4 +1,4 @@
-class AdminFaqsService {
+class AdminQuestionsService {
 
   constructor($q, BaseService) {
     this.$q = $q;
@@ -50,6 +50,6 @@ class AdminFaqsService {
 
 }
 
-AdminFaqsService.$inject = ['$q', 'BaseService'];
+AdminQuestionsService.$inject = ['$q', 'BaseService'];
 
-export default AdminFaqsService;
+export default AdminQuestionsService;

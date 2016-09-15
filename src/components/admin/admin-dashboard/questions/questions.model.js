@@ -1,8 +1,8 @@
-class AdminFaqsModel {
+class AdminQuestionsModel {
   constructor() {
     this.title = '';
     this.answer = '';
   }
 }
 
-export default AdminFaqsModel;
+export default AdminQuestionsModel;

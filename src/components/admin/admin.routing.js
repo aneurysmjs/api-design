@@ -61,14 +61,14 @@ function adminRouting($stateProvider) {
      })
      .state('admin.dashboard.faqs', {
        url: '/faqs',
-       template: `<admin-faqs questions="$resolve.questions"></admin-faqs>`,
+       template: `<questions questions="$resolve.questions"></questions>`,
        resolve: {
          loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
            return $q((resolve) => {
              require.ensure([], () => {
                // load whole module
-               let module = require('./admin-dashboard/admin-faqs/admin-faqs').default;
-               $ocLazyLoad.load({name: 'app.admin.dashboard.faqs'});
+               let module = require('./admin-dashboard/questions/questions').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.questions'});
                resolve(module.component);
              });
            });
