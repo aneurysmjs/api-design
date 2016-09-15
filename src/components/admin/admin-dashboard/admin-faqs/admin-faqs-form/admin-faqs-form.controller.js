@@ -25,7 +25,7 @@ class AdminFaqsFormController {
     this.AdminFaqsFormService.saveOrUpdate(this.question).then(action => {
       // action if a text for 'onUpdate' or 'onSave' so it'll be this.onUpdate or this.onSave
       this[action](this.EventEmitter({question: this.question}));
-      this.question = {};
+
     });
   }
 
