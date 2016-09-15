@@ -1,4 +1,4 @@
-import faqModel from './admin-faqs.model';
+import questionModel from './admin-faqs.model';
 
 class AdminFaqsController {
 
@@ -7,14 +7,14 @@ class AdminFaqsController {
   }
 
   $onInit() {
-    this.faq = new faqModel();
+    this.question = new questionModel();
   }
 
   createFaq({question}) {
 
     this.AdminFaqsService.processQuestion(question)
        .then(questionProcessed => {
-         this.faqs.$add(questionProcessed).then(response => console.log(response));
+         this.questions.$add(questionProcessed).then(response => console.log(response));
        })
        .catch(reason => {
 
@@ -23,11 +23,11 @@ class AdminFaqsController {
   }
   
   editFaq({question}) {
-    this.faq = question;
+    this.question = question;
   }
 
   updateFaq({question}) {
-    this.faqs.$save(question)
+    this.questions.$save(question)
        .then(response => console.log(response))
        .catch(reason => console.log(reason));
   }

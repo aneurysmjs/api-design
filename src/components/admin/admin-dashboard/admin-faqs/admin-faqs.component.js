@@ -7,7 +7,7 @@ let adminFaqsComponent = {
   template,
   controller,
   bindings: {
-    faqs: '<'
+    questions: '<'
   }
 };
 

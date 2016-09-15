@@ -1,12 +1,12 @@
 <section class="adminFaqs row">
   <admin-faqs-form on-save="$ctrl.createFaq($event)"
                    on-update="$ctrl.updateFaq($event)"
-                   question="$ctrl.faq"
+                   question="$ctrl.question"
                    class="col-sm-9 col-md-6">
   </admin-faqs-form>
-  <admin-faqs-tree question-tree="$ctrl.faqs"
+  <admin-faqs-tree question-tree="$ctrl.questions"
                    on-edit="$ctrl.editFaq($event)"
                    class="col-sm-9 col-md-6" >
   </admin-faqs-tree>
-  <!--<admin-faqs-table faqs="$ctrl.faqs"></admin-faqs-table>-->
+  <!--<admin-faqs-table faqs="$ctrl.questions"></admin-faqs-table>-->
 </section>
