@@ -46,6 +46,15 @@
              on-delete="$ctrl.deleteQuestionFile($event)"
              on-download="$ctrl.downloadQuestionFile($event)">
   </file-list>
+
+  <div uib-collapse="$ctrl.isError">
+    <div class="well well-lg">
+      <p class="text-danger">
+        <span ng-bind="$ctrl.error"></span>
+      </p>
+    </div>
+  </div>
+
   <hr>
 
   <button type="submit"

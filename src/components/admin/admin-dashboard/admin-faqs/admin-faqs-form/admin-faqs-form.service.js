@@ -46,30 +46,40 @@ class AdminFaqsFormController {
   }
 
   deleteQuestionFile(files, file) {
+
     let index = files.indexOf(file);
 
-    if (file.downloadURL) {
-      
-      let storageRef = this.BaseService.storage().ref();
+    let deleteFiles = (files) => {
+      files = [
+        ...files.slice(0, index),
+        ...files.slice(index + 1)
+      ];
+      return files;
+    };
 
-      let fileRef = storageRef.child(`jeroFiles/${file.name}`);
 
-      fileRef.delete().then(() => {
-        console.log("file deleted");
-      }).catch(error => {
-         console.log('error');
-         console.log(error);
-      });
-
-    }
-    
-    files = [
-      ...files.slice(0, index),
-      ...files.slice(index + 1)
-    ];
 
     return this.$q((resolve, reject) => {
-      resolve(files);
+
+      if (file.downloadURL) {
+
+        let storageRef = this.BaseService.storage().ref();
+
+        let fileRef = storageRef.child(`jeroFiles/${file.name}`);
+
+        fileRef.delete().then(() => {
+          console.log("file deleted");
+          resolve(deleteFiles(files));
+        }).catch(error => {
+          console.log('error');
+          console.log(error);
+          reject(error);
+        });
+
+      } else {
+        resolve(deleteFiles(files));
+      }
+
     });
 
   }

@@ -1,13 +1,14 @@
 class AdminFaqsFormController {
 
-  constructor(EventEmitter, AdminFaqsFormService, $window) {
+  constructor(EventEmitter, AdminFaqsFormService, $window, $timeout) {
     this.EventEmitter = EventEmitter;
     this.AdminFaqsFormService = AdminFaqsFormService;
     this.$window = $window;
+    this.$timeout = $timeout;
   }
 
   $onInit() {
-
+    this.isError = false;
     this.tinymceOptions = this.AdminFaqsFormService.tinyMceOptions();
 
     this.buttonText = 'Guardar';
@@ -30,9 +31,9 @@ class AdminFaqsFormController {
   }
 
   deleteQuestionFile({file}) {
-    this.AdminFaqsFormService.deleteQuestionFile(this.question.files, file).then(files => {
-      this.question.files = files;
-    });
+    this.AdminFaqsFormService.deleteQuestionFile(this.question.files, file)
+       .then(files => this.question.files = files)
+       .catch(({message}) => this.displayError(message));
 
   }
 
@@ -42,8 +43,12 @@ class AdminFaqsFormController {
     });
   }
 
+  displayError(message) {
+    this.error = message;
+  }
+
 }
 
-AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService', '$window'];
+AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService', '$window', '$timeout'];
 
 export default AdminFaqsFormController;
