@@ -48,6 +48,21 @@ class AdminFaqsFormController {
   deleteQuestionFile(files, file) {
     let index = files.indexOf(file);
 
+    if (file.downloadURL) {
+      
+      let storageRef = this.BaseService.storage().ref();
+
+      let fileRef = storageRef.child(`jeroFiles/${file.name}`);
+
+      fileRef.delete().then(() => {
+        console.log("file deleted");
+      }).catch(error => {
+         console.log('error');
+         console.log(error);
+      });
+
+    }
+    
     files = [
       ...files.slice(0, index),
       ...files.slice(index + 1)
