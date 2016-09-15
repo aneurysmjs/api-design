@@ -15,15 +15,11 @@
             ng-model="$ctrl.question.answer">
   </textarea>
 
-  <div class="form-group">
-    <label for="tags">Tags</label>
-    <input type="text"
-           class="form-control"
-           id="tags"
-           name="tags"
-           ng-model="$ctrl.question.tags"
-           placeholder="Separados por coma.">
-  </div>
+  <question-tags tags="$ctrl.question.tags"
+                  on-add="$ctrl.addTags($event)"
+                  on-delete="$ctrl.addTags($event)">
+  </question-tags>
+
   <div class="form-group">
     <button class="btn btn-default"
             type="button"
