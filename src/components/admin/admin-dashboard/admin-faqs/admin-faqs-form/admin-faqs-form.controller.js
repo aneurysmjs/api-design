@@ -1,8 +1,9 @@
 class AdminFaqsFormController {
 
-  constructor(EventEmitter, AdminFaqsFormService) {
+  constructor(EventEmitter, AdminFaqsFormService, $window) {
     this.EventEmitter = EventEmitter;
     this.AdminFaqsFormService = AdminFaqsFormService;
+    this.$window = $window;
   }
 
   $onInit() {
@@ -38,8 +39,14 @@ class AdminFaqsFormController {
 
   }
 
+  downloadQuestionFile({file}) {
+    this.AdminFaqsFormService.downloadFile(file).then(url => {
+      this.$window.location.href = url;
+    });
+  }
+
 }
 
-AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService'];
+AdminFaqsFormController.$inject = ['EventEmitter', 'AdminFaqsFormService', '$window'];
 
 export default AdminFaqsFormController;

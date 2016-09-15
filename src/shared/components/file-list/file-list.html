@@ -17,6 +17,11 @@
            <span ng-click="$ctrl.deleteFile(file)"
                  class="glyphicon glyphicon-trash">
             </span>
+          <a ng-href="{{file.downloadURLPath}}" download ng-if="file.downloadURLPath">
+            <span
+                  class="glyphicon glyphicon-cloud-download">
+            </span>
+          </a>
         </td>
       </tr>
     </tbody>

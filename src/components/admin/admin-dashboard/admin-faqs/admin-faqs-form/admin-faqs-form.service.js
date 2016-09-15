@@ -27,31 +27,22 @@ class AdminFaqsFormController {
 
   }
 
-  uploadFiles(files) {
+  downloadFile(file) {
+    // Content-Disposition: attachment;
+    // filename="mypdf.pdf";
+    let storageRef = this.BaseService.storage().ref();
 
-    files.forEach(file => {
-      // create storage reference
-      let storageRef = this.BaseService.storage().ref(`jeroFiles/${file.name}`);
-      // upload the file
-      let task = storageRef.put(file);
+    return this.$q((resolve, reject) => {
+      storageRef.child(`jeroFiles/${file.name}`).getDownloadURL().then((url) => {
+        console.log('url');
+        console.log(url);
+        // This can also be downloaded directly
+        resolve(url);
+      }).catch((error) => {
+        // Handle any errors
+      });
     });
 
-    /*// update progress bar
-
-    task.on('state_changed',
-       (snapshot) => {
-         let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-       },
-       (error) => {
-
-       },
-       () => {
-
-       }
-    );*/
-
-
-    return this.BaseService.storage();
   }
 
 }

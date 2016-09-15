@@ -6,18 +6,23 @@ class AdminFaqsService {
   }
 
   uploadFiles(files) {
-    let storageRef, task;
 
-    let snapShots = files.map(file => {
-      // create storage reference
-      storageRef = this.BaseService.storage().ref(`jeroFiles/${file.name}`);
-      // upload the file
-      return storageRef.put(file).then(snapShot => snapShot);
-
-    });
+    let storageRef = this.BaseService.storage(),
+        allPromises = files.map(file => storageRef.ref(`jeroFiles/${file.name}`).put(file));
 
     return this.$q((resolve, reject) => {
-      resolve(snapShots);
+      this.$q.all(allPromises)
+         .then(promises => promises.map(({downloadURL, metadata}) => {
+           return {
+             downloadURL,
+             name: metadata.name,
+             type: metadata.name,
+             timeCreated: metadata.timeCreated,
+             size: metadata.size
+           };
+         }))
+         .then(urls => resolve(urls))
+         .catch(reason => reject(reason));
     });
 
   }
@@ -25,11 +30,14 @@ class AdminFaqsService {
   processQuestion(question) {
 
     // cached File objects array
-    let files = question.files.map(({name, type, size}) => ({name, type, size}));
+    let cachedFiles = question.files.map(({name, type, size}) => ({name, type, size}));
 
     return this.$q((resolve, reject) => {
+
       if (question.files.length) {
-        this.uploadFiles(question.files).then(snaps => {
+        this.uploadFiles(question.files).then(files => {
+          console.log('files');
+          console.log(files);
           question.files = files; // replace FileList wit the cache File array
           resolve(question);
         });
@@ -38,8 +46,7 @@ class AdminFaqsService {
       }
 
     });
-
-  }
+   }
 
 }
 

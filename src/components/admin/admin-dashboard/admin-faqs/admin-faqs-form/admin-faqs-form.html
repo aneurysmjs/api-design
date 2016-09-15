@@ -1,5 +1,5 @@
 <form name="adminFaqs" ng-submit="$ctrl.saveFaq()">
-  <pre>{{$ctrl.question | json}}</pre>
+  <!--<pre>{{$ctrl.question | json}}</pre>-->
   <div class="form-group">
     <label for="question">Pregunta</label>
     <input type="text"
@@ -40,16 +40,16 @@
             accept="image/*">Adjuntar</button>-->
 
     <!--<progress value="0" max="100" id="uploader">0%</progress>-->
+
   </div>
   <file-list files="$ctrl.question.files"
-             on-delete="$ctrl.deleteQuestionFile($event)">
+             on-delete="$ctrl.deleteQuestionFile($event)"
+             on-download="$ctrl.downloadQuestionFile($event)">
   </file-list>
   <hr>
-
-
 
   <button type="submit"
           class="btn btn-primary"
           ng-bind="$ctrl.buttonText"></button>
-</form>
 
+</form>
