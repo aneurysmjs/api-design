@@ -45,6 +45,20 @@ class AdminFaqsFormController {
 
   }
 
+  deleteQuestionFile(files, file) {
+    let index = files.indexOf(file);
+
+    files = [
+      ...files.slice(0, index),
+      ...files.slice(index + 1)
+    ];
+
+    return this.$q((resolve, reject) => {
+      resolve(files);
+    });
+
+  }
+
 }
 
 AdminFaqsFormController.$inject = ['$q', 'BaseService'];

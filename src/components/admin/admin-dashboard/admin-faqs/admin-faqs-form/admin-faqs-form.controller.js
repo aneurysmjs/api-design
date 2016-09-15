@@ -30,12 +30,9 @@ class AdminFaqsFormController {
   }
 
   deleteQuestionFile({file}) {
-    let index = this.question.files.indexOf(file);
-
-    this.question.files = [
-      ...this.question.files.slice(0, index),
-      ...this.question.files.slice(index + 1)
-    ];
+    this.AdminFaqsFormService.deleteQuestionFile(this.question.files, file).then(files => {
+      this.question.files = files;
+    });
 
   }
 
