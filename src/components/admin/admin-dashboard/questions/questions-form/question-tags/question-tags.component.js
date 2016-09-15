@@ -8,7 +8,7 @@ let questionTagsComponent = {
   controller,
   bindings: {
     tags: '<',
-    onCreate: '&',
+    onAdd: '&',
     onDelete: '&'
   }
 };

@@ -2,6 +2,7 @@ class AdminQuestionsModel {
   constructor() {
     this.title = '';
     this.answer = '';
+    this.tags = [];
   }
 }
 

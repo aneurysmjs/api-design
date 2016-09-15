@@ -43,6 +43,18 @@ class QuestionsFormController {
     });
   }
 
+  addTags({tags}) {
+    this.question.tags = tags;
+  }
+
+  deleteTag({tag}) {
+    let index = this.question.tags.indexOf(tag);
+    this.question.tags = [
+       ...this.question.tags.slice(0, index),
+       ...this.question.tags.slice(index + 1)
+    ];
+  }
+
   displayError(message) {
     this.error = message;
   }
