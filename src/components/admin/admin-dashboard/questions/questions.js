@@ -4,12 +4,10 @@ import AdminQuestionsService from './questions.service';
 
 import questionsForm from './questions-form/questions-form';
 import questionsTree from './admin-faqs-tree/admin-faqs-tree';
-import questionsTags from './question-tags/question-tags';
 
 let questionsModule = angular.module('app.admin.dashboard.questions', [
     questionsForm.name,
-    questionsTree.name,
-    questionsTags.name
+    questionsTree.name
   ])
   .component('questions', questionsComponent)
   .service('AdminQuestionsService', AdminQuestionsService);
