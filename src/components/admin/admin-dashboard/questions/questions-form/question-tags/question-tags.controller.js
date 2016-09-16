@@ -15,7 +15,7 @@ class QuestionTagsController {
 
   checkEnter($event) {
 
-    if ($event.keyCode === 13) {
+    if ($event.keyCode === 13 && this.tagsModel !== '') {
 
       $event.preventDefault();
 
