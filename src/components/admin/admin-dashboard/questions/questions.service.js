@@ -16,7 +16,7 @@ class AdminQuestionsService {
            return {
              downloadURL,
              name: metadata.name,
-             type: metadata.name,
+             type: metadata.type,
              timeCreated: metadata.timeCreated,
              size: metadata.size
            };
@@ -46,6 +46,7 @@ class AdminQuestionsService {
       }
 
     });
+
    }
 
 }

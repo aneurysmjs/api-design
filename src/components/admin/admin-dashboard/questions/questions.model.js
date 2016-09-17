@@ -1,4 +1,4 @@
-class AdminQuestionsModel {
+class QuestionsModel {
   constructor() {
     this.title = '';
     this.answer = '';
@@ -7,4 +7,4 @@ class AdminQuestionsModel {
   }
 }
 
-export default AdminQuestionsModel;
+export default QuestionsModel;
