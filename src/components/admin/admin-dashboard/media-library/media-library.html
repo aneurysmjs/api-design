@@ -1,5 +1,18 @@
-<section>
+<section class="mediaLibrary">
   <h2>Medios</h2>
+
+  <div ngf-drop="$ctrl.uploadFiles($files)"
+       ngf-select="$ctrl.uploadFiles($files)"
+       ng-model="$ctrl.fileList"
+       class="mediaLibrary_dropzone"
+       ngf-drag-over-class="'mediaLibrary_dropzone--dragover'"
+       ngf-validate="{size: {max: '20MB'}"
+       ngf-multiple="true"
+       ngf-allow-dir="true"
+       accept="image/*,application/pdf"
+       ngf-pattern="'image/*,application/pdf'">
+    Arrastra tus archivos aquí
+  </div>
 
   <form name="mediaLibrary">
 

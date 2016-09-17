@@ -28,7 +28,8 @@ function config($provide, $ocLazyLoadProvider, $stateProvider, $firebaseRefProvi
 
   $firebaseRefProvider.registerUrl({
     default: firebaseConfig.databaseURL,
-    questions: `${firebaseConfig.databaseURL}/admin/support/questions`
+    questions: `${firebaseConfig.databaseURL}/admin/support/questions`,
+    uploads: `${firebaseConfig.databaseURL}/admin/support/uploads`
   });
 
 }

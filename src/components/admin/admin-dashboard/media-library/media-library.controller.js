@@ -7,7 +7,7 @@ class MediaLibraryController {
   $onInit() {
     this.fileList = [];
 
-    this.retrieveFiles();
+    //this.retrieveFiles();
   }
 
   $onChanges(changes) {
@@ -24,12 +24,14 @@ class MediaLibraryController {
   }
 
   uploadFiles($files) {
+
     this.MediaLibraryService.uploadFiles($files).then(files => {
       this.fileList = files;
     })
     .catch(error => {
 
     });
+
   }
 
 }
