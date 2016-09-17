@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label for="tags">Tags</label>
+  <input type="text"
+         class="form-control"
+         id="tags"
+         name="tags"
+         ng-model="$ctrl.tagsModel"
+         ng-keypress="$ctrl.checkEnter($event)"
+         placeholder="Separados por coma.">
+
+  <aside class="questionTags">
+    <div class="questionTags_tagItem" ng-repeat="tag in $ctrl.tags track by $index">
+      <span ng-bind="tag"></span>
+      <span class="glyphicon glyphicon-remove questionTags_tagItem--position" ng-click="$ctrl.deleteTag(tag)"></span>
+    </div>
+  </aside>
+</div>

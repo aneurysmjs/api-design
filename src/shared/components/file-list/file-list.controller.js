@@ -8,6 +8,10 @@ class FileListController {
     this.onDelete(this.EventEmitter({file}));
   }
 
+  downloadFile(file) {
+    this.onDownload(this.EventEmitter({file}));
+  }
+
 }
 
 FileListController.$inject = ['EventEmitter'];

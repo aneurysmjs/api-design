@@ -7,7 +7,8 @@ let fileListComponent = {
   controller,
   bindings: {
     files: '<',
-    onDelete: '&'
+    onDelete: '&',
+    onDownload: '&'
   }
 };
 

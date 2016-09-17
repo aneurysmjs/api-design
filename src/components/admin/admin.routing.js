@@ -61,14 +61,14 @@ function adminRouting($stateProvider) {
      })
      .state('admin.dashboard.faqs', {
        url: '/faqs',
-       template: `<admin-faqs faqs="$resolve.faqs"></admin-faqs>`,
+       template: `<questions questions="$resolve.questions"></questions>`,
        resolve: {
          loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
            return $q((resolve) => {
              require.ensure([], () => {
                // load whole module
-               let module = require('./admin-dashboard/admin-faqs/admin-faqs').default;
-               $ocLazyLoad.load({name: 'app.admin.dashboard.faqs'});
+               let module = require('./admin-dashboard/questions/questions').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.questions'});
                resolve(module.component);
              });
            });
@@ -77,8 +77,28 @@ function adminRouting($stateProvider) {
            // $requireSignIn returns a promise so the resolve waits for it to complete
            return AuthService.$requireSignIn();
          }],
-         faqs: ['$firebaseArray', '$firebaseRef', ($firebaseArray, $firebaseRef) => {
-           return $firebaseArray($firebaseRef.faqs).$loaded();
+         questions: ['$firebaseArray', '$firebaseRef', ($firebaseArray, $firebaseRef) => {
+           return $firebaseArray($firebaseRef.questions).$loaded();
+         }]
+       }
+     })
+     .state('admin.dashboard.mediaLibrary', {
+       url: '/media',
+       template: `<media-library></media-library>`,
+       resolve: {
+         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
+           return $q((resolve) => {
+             require.ensure([], () => {
+               // load whole module
+               let module = require('./admin-dashboard/media-library/media-library').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.media-library'});
+               resolve(module.component);
+             });
+           });
+         }],
+         currentAuth: ['AuthService', (AuthService) => {
+           // $requireSignIn returns a promise so the resolve waits for it to complete
+           return AuthService.$requireSignIn();
          }]
        }
      });

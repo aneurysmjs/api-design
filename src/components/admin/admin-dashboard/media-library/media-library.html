@@ -1,0 +1,26 @@
+<section>
+  <h2>Medios</h2>
+
+  <form name="mediaLibrary">
+
+    <div class="form-group">
+      <button class="btn btn-default"
+              type="button"
+              ngf-select="$ctrl.uploadFiles($files)"
+              ng-model="$ctrl.files"
+              ngf-multiple="true"
+              ngf-accept="'image/*'">
+        Adjuntar
+        <span class="glyphicon glyphicon-paperclip"></span>
+      </button>
+
+      <!--<progress value="0" max="100" id="uploader">0%</progress>-->
+
+    </div>
+
+    <file-list files="$ctrl.fileList"></file-list>
+
+    <pre>{{$ctrl.fileList | json}}</pre>
+
+  </form>
+</section>

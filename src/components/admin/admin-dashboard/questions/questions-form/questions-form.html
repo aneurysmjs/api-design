@@ -1,5 +1,5 @@
 <form name="adminFaqs" ng-submit="$ctrl.saveFaq()">
-  <pre>{{$ctrl.question | json}}</pre>
+  <!--<pre>{{$ctrl.question | json}}</pre>-->
   <div class="form-group">
     <label for="question">Pregunta</label>
     <input type="text"
@@ -15,15 +15,11 @@
             ng-model="$ctrl.question.answer">
   </textarea>
 
-  <div class="form-group">
-    <label for="tags">Tags</label>
-    <input type="text"
-           class="form-control"
-           id="tags"
-           name="tags"
-           ng-model="$ctrl.question.tags"
-           placeholder="Separados por coma.">
-  </div>
+  <question-tags tags="$ctrl.question.tags"
+                 on-add="$ctrl.addTags($event)"
+                 on-delete="$ctrl.deleteTag($event)">
+  </question-tags>
+
   <div class="form-group">
     <button class="btn btn-default"
             type="button"
@@ -40,16 +36,25 @@
             accept="image/*">Adjuntar</button>-->
 
     <!--<progress value="0" max="100" id="uploader">0%</progress>-->
+
   </div>
   <file-list files="$ctrl.question.files"
-             on-delete="$ctrl.deleteQuestionFile($event)">
+             on-delete="$ctrl.deleteQuestionFile($event)"
+             on-download="$ctrl.downloadQuestionFile($event)">
   </file-list>
+
+  <div uib-collapse="$ctrl.isError">
+    <div class="well well-lg">
+      <p class="text-danger">
+        <span ng-bind="$ctrl.error"></span>
+      </p>
+    </div>
+  </div>
+
   <hr>
-
-
 
   <button type="submit"
           class="btn btn-primary"
           ng-bind="$ctrl.buttonText"></button>
-</form>
 
+</form>
