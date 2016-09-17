@@ -25,13 +25,22 @@ class MediaLibraryController {
 
   uploadFiles($files) {
 
-    this.MediaLibraryService.uploadFiles($files).then(files => {
+    this.MediaLibraryService.uploadFiles($files)
+      .then(files => this.fileList = files)
+      .then(files => {
+        this.fileList = files;
+      })
+      .catch(error => error);
+
+  }
+
+  deleteFiles({file}) {
+    this.MediaLibraryService.deleteFiles(file).then(files => {
       this.fileList = files;
     })
     .catch(error => {
 
     });
-
   }
 
 }

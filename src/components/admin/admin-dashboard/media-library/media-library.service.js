@@ -1,9 +1,10 @@
 class MediaLibraryService {
 
-  constructor(BaseService, $q, $firebaseRef) {
+  constructor(BaseService, $q, $firebaseRef, $firebaseArray) {
     this.BaseService = BaseService;
     this.$q = $q;
     this.$firebaseRef = $firebaseRef;
+    this.uploads =$firebaseArray($firebaseRef.uploads);
   }
 
   createFiles($files) {
@@ -12,7 +13,11 @@ class MediaLibraryService {
   }
 
   retrieveFiles() {
-
+    return this.$q((resolve, reject) => {
+      this.uploads.$loaded()
+         .then(files => resolve(files))
+         .catch(error => reject(error));
+    });
   }
 
   uploadFiles(files) {
@@ -23,15 +28,21 @@ class MediaLibraryService {
     return this.$q((resolve, reject) => {
       this.$q.all(filePromises)
          .then(promises => promises.map(({downloadURL, metadata}) => {
-           return {
+
+           let uploadObject = {
              downloadURL,
              name: metadata.name,
              type: metadata.type,
              timeCreated: metadata.timeCreated,
              size: metadata.size
            };
+
+           this.uploads.$add(uploadObject);
+
+           return uploadObject;
+
          }))
-         .then(urls => resolve(urls))
+         .then(filesObjects => resolve(filesObjects))
          .catch(reason => reject(reason))
          .finally(() => console.log('upload finally'));
     });
@@ -40,6 +51,6 @@ class MediaLibraryService {
 
 }
 
-MediaLibraryService.$inject = ['BaseService', '$q', '$firebaseRef'];
+MediaLibraryService.$inject = ['BaseService', '$q', '$firebaseRef', '$firebaseArray'];
 
 export default MediaLibraryService;
