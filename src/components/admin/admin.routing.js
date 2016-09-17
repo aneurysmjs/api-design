@@ -81,6 +81,26 @@ function adminRouting($stateProvider) {
            return $firebaseArray($firebaseRef.questions).$loaded();
          }]
        }
+     })
+     .state('admin.dashboard.mediaLibrary', {
+       url: '/media',
+       template: `<media-library></media-library>`,
+       resolve: {
+         loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
+           return $q((resolve) => {
+             require.ensure([], () => {
+               // load whole module
+               let module = require('./admin-dashboard/media-library/media-library').default;
+               $ocLazyLoad.load({name: 'app.admin.dashboard.media-library'});
+               resolve(module.component);
+             });
+           });
+         }],
+         currentAuth: ['AuthService', (AuthService) => {
+           // $requireSignIn returns a promise so the resolve waits for it to complete
+           return AuthService.$requireSignIn();
+         }]
+       }
      });
 }
 
