@@ -3,6 +3,7 @@ class AdminQuestionsModel {
     this.title = '';
     this.answer = '';
     this.tags = [];
+    this.files = [];
   }
 }
 
