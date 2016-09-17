@@ -21,7 +21,7 @@ function adminRouting($stateProvider) {
      })
      .state('admin.dashboard', {
        url: '/dashboard',
-       template: '<admin-dashboard></admin-dashboard>',
+       template: '<admin-dashboard current-auth="$resolve.currentAuth"></admin-dashboard>',
        resolve: {
          loadAdminDashboardComponent: ['$q', '$ocLazyLoad', 'AuthService', ($q, $ocLazyLoad, AuthService) => {
            return $q((resolve) => {
