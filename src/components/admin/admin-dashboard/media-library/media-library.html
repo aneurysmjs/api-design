@@ -31,7 +31,8 @@
 
     </div>
 
-    <file-list files="$ctrl.fileList"></file-list>
+    <file-list files="$ctrl.fileList"
+               on-delete="$ctrl.deleteFile($event)"></file-list>
 
     <pre>{{$ctrl.fileList | json}}</pre>
 

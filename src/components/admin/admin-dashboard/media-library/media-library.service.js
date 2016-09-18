@@ -4,7 +4,7 @@ class MediaLibraryService {
     this.BaseService = BaseService;
     this.$q = $q;
     this.$firebaseRef = $firebaseRef;
-    this.uploads =$firebaseArray($firebaseRef.uploads);
+    this.uploads = $firebaseArray($firebaseRef.uploads);
   }
 
   createFiles($files) {
@@ -42,11 +42,31 @@ class MediaLibraryService {
            return uploadObject;
 
          }))
-         .then(() => this.retrieveFiles().then(files => resolve(files)))
+         //.then(() => this.retrieveFiles().then(files => resolve(files)))
+         .then(files => resolve(files))
          .catch(reason => reject(reason))
          .finally(() => console.log('upload finally'));
     });
 
+  }
+
+  deleteFile(file) {
+    return this.$q((resolve, reject) => {
+
+      let storageRef = this.BaseService.storage().ref();
+
+      let fileRef = storageRef.child(`uploads/${file.name}`);
+
+      fileRef.delete().then(() => {
+        console.log("file deleted");
+        resolve("file deleted");
+      }).catch(error => {
+        console.log('error');
+        console.log(error);
+        reject(error);
+      });
+
+    });
   }
 
 }
