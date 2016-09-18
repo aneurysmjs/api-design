@@ -28,7 +28,7 @@ class MediaLibraryService {
     return this.$q((resolve, reject) => {
       this.$q.all(filePromises)
          .then(promises => promises.map(({downloadURL, metadata}) => {
-
+           console.log(metadata);
            let uploadObject = {
              downloadURL,
              name: metadata.name,
@@ -42,7 +42,7 @@ class MediaLibraryService {
            return uploadObject;
 
          }))
-         .then(filesObjects => resolve(filesObjects))
+         .then(() => this.retrieveFiles().then(files => resolve(files)))
          .catch(reason => reject(reason))
          .finally(() => console.log('upload finally'));
     });
