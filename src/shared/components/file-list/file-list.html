@@ -1,0 +1,34 @@
+<aside class="table-responsive" ng-if="$ctrl.files.length">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Tamaño</th>
+        <th>Fecha Creación</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="file in $ctrl.files track by $index">
+        <td ng-bind="file.name"></td>
+        <td ng-bind="file.type"></td>
+        <td ng-bind="file.size + ' bytes'"></td>
+        <td ng-bind="file.timeCreated | date:'dd/MM/yyyy'"></td>
+        <td>
+          <span ng-click="$ctrl.deleteFile(file)"
+                tooltip-placement="top" 
+                uib-tooltip="Eliminar"
+                class="glyphicon glyphicon-trash">
+          </span>
+          <a ng-if="file.downloadURL" 
+             ng-href="{{file.downloadURL}}" 
+             target="_blank"
+             download="" >
+            <span class="glyphicon glyphicon-cloud-download"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>

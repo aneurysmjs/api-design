@@ -1,9 +1,11 @@
 class AdminDashboardController {
-   
-   constructor(AdminDashboardService) {
-      this.AdminDashboardService = AdminDashboardService;
-   }
-   
+
+  constructor(AdminDashboardService) {
+    this.AdminDashboardService = AdminDashboardService;
+    console.log('this.currentAuth');
+    console.log(this.currentAuth);
+  }
+
 }
 
 AdminDashboardController.$inject = ['AdminDashboardService'];

@@ -6,7 +6,9 @@ import './admin-dashboard.styl';
 let adminDashboardComponent = {
   template,
   controller,
-  bindings: {}
+  bindings: {
+    currentAuth: '<'
+  }
 };
 
 export default adminDashboardComponent;

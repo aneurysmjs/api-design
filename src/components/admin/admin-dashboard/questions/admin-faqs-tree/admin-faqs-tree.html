@@ -1,0 +1,25 @@
+<aside>
+  <!--<pre ng-bind="$ctrl.tree | json"></pre>
+  <ul class="adminFaqs_items">
+    <li ng-repeat="data in $ctrl.tree">
+      <questions-tree-node item="data"
+                            on-add="$ctrl.addNode($event)"
+                            on-delete="$ctrl.deleteNode($event)">
+      </questions-tree-node>
+    </li>
+  </ul>
+-->
+  <pre ng-bind="$ctrl.questionTree | json"></pre>
+  <ul class="list-group">
+    <li ng-repeat="question in $ctrl.questionTree track by $index"
+        ng-click="$ctrl.editNode(question)"
+        class="list-group-item">
+       <span ng-click="$ctrl.deleteItem($ctrl.item)"
+             class="glyphicon glyphicon-trash">
+       </span>
+
+      <article ng-bind-html="question.answer"></article>
+    </li> 
+  </ul>
+
+</aside>

@@ -1,0 +1,40 @@
+<section class="mediaLibrary">
+  <h2>Medios</h2>
+
+  <div ngf-drop="$ctrl.uploadFiles($files)"
+       ngf-select="$ctrl.uploadFiles($files)"
+       ng-model="$ctrl.files"
+       class="mediaLibrary_dropzone"
+       ngf-drag-over-class="'mediaLibrary_dropzone--dragover'"
+       ngf-validate="{size: {max: '20MB'}"
+       ngf-multiple="true"
+       ngf-allow-dir="true"
+       accept="image/*,application/pdf"
+       ngf-pattern="'image/*,application/pdf'">
+    Arrastra tus archivos aquí
+  </div>
+
+  <form name="mediaLibrary">
+
+    <div class="form-group">
+      <button class="btn btn-default"
+              type="button"
+              ngf-select="$ctrl.uploadFiles($files)"
+              ng-model="$ctrl.files"
+              ngf-multiple="true"
+              ngf-accept="'image/*'">
+        Adjuntar
+        <span class="glyphicon glyphicon-paperclip"></span>
+      </button>
+
+      <!--<progress value="0" max="100" id="uploader">0%</progress>-->
+
+    </div>
+
+    <file-list files="$ctrl.fileList"
+               on-delete="$ctrl.deleteFile($event)"></file-list>
+
+    <pre>{{$ctrl.fileList | json}}</pre>
+
+  </form>
+</section>

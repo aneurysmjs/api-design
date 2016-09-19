@@ -6,6 +6,7 @@ import ngMessages from 'angular-messages';
 import uiRouter from 'angular-ui-router';
 import angularfire from 'angularfire';
 import ocLazyLoad from 'oclazyload';
+import ngFileUpload from 'ng-file-upload';
 
 let appLibraries = angular.module('app.libraries', [
   ngSanitize,
@@ -15,7 +16,8 @@ let appLibraries = angular.module('app.libraries', [
   uiRouter,
   angularfire,
   // It's a hack! https://github.com/ocombe/ocLazyLoad/issues/179
-  (() => ocLazyLoad)()
+  (() => ocLazyLoad)(),
+  ngFileUpload
 ]);
 
 export default appLibraries;
