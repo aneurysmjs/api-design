@@ -1,0 +1,36 @@
+{
+  "name": "api-design",
+  "version": "0.0.0",
+  "description": "just how to build good API's",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/basic/basic-api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackendstudios/api-design.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "jero <jero@blackendstudios.com> (https://blackendstudios.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blackendstudios/api-design/issues"
+  },
+  "homepage": "https://github.com/blackendstudios/api-design#readme",
+  "devDependencies": {
+    "body-parser": "1.15.2",
+    "commitizen": "2.8.6",
+    "cz-conventional-changelog": "1.2.0",
+    "express": "4.14.0",
+    "morgan": "1.7.0",
+    "nodemon": "1.11.0"
+  },
+  "dependencies": {
+    "flat-ui": "2.1.1",
+    "lodash": "4.16.2"
+  }
+}
