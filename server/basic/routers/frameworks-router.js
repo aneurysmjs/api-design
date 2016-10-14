@@ -3,12 +3,11 @@ let frameworksRouter = require('express').Router();
 let frameworks = [],
    id = 0;
 
-
 function updateId(req, res, next) {
   console.log('req.body');
   console.log(req.body);
   if (!req.body.id) {
-    id +=1;
+    id += 1;
     req.body.id = id + '';
   }
 
@@ -33,46 +32,66 @@ frameworksRouter.param('id', function (req, res, next, id) {
 });
 
 /**
- * when '/' is hitting the root of the router not the root of the application
+ * we can refacore our routes using the '.route()' method, so instead of having lots of places that shared the same url,
+ * we can define that common url and only apply the HTTP verbs that correspond.
  */
-frameworksRouter.get('/', (req, res) => {
-  res.json(frameworks);
-});
+frameworksRouter.route('/')
+   .get((req, res) => {
+     res.json(frameworks);
+   })
+   .post(updateId, (req, res) => {
 
-frameworksRouter.get('/:id', (req, res) => {
+     let framework = req.body;
 
-  let framework = frameworks.filter(({id}) => id === req.params.id)[0];
+     frameworks = [...frameworks, framework];
+     console.log('frameworks');
+     console.log(frameworks);
+     res.json(framework);
+   });
 
-  res.json(framework || {});
 
-});
+frameworksRouter.route('/:id')
+   .get((req, res) => {
 
-frameworksRouter.post('/', updateId, (req, res) =>  {
+     let framework = frameworks.filter(({id}) => id === req.params.id)[0];
 
-  let framework = req.body;
+     res.json(framework || {});
 
-  frameworks = [...frameworks, framework];
-  console.log('frameworks');
-  console.log(frameworks);
-  res.json(framework);
-});
+   })
+   .put((req, res) => {
 
-frameworksRouter.put('/:id', (req, res) =>  {
+     let framework = req.body,
+        index = frameworks.indexOf(frameworks.filter(({id}) => id === req.params.id)[0]);
 
-  let framework = req.body,
-     index = frameworks.indexOf(frameworks.filter(({id}) => id === req.params.id)[0]);
+     if (framework.id) {
+       delete framework.id
+     }
 
-  if (framework.id) {
-    delete framework.id
-  }
+     if (!frameworks[index]) { // is this index not exists, don't do anything
+       res.send();
+     } else {
+       frameworks[index] = framework;
+       res.json(framework);
+     }
 
-  if (!frameworks[index]) { // is this index not exists, don't do anything
-    res.send();
-  } else {
-    frameworks[index] = framework;
-    res.json(framework);
-  }
+   })
+   .delete((req, res) => {
 
-});
+     let framework = frameworks.filter(({id}) => id === req.params.id)[0],
+        index = frameworks.indexOf(frameworks.filter(({id}) => id === req.params.id)[0]);
+
+     if (index !== -1) {
+
+       frameworks = [
+         ...frameworks.slice(0, index),
+         ...frameworks.slice(index + 1)
+       ];
+
+       res.json(framework);
+     } else {
+       res.send(new Error('fuck you'));
+     }
+
+   });
 
 module.exports = frameworksRouter;

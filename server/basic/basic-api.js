@@ -18,8 +18,8 @@ app.use('/frameworks', frameworksRouter);
 
 // Error Handler middleware
 app.use(function (err, req, res, next) {
-  console.log('err');
-  console.log(err);
+  console.log('Error Handler middleware');
+  console.log(err.message);
   if (err) {
     res.status(500).send(err);
   }
