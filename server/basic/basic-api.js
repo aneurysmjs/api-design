@@ -3,13 +3,30 @@ let express = require('express'),
     morgan = require('morgan'),
     app = express();
 
+let frameworks = [{name: 'angular2', id: '1'}, {name: 'react', id: '2'}],
+   id = 0;
+
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
-let frameworks = [{name: 'angular2', id: '1'}, {name: 'react', id: '2'}],
-    id = 0;
+/*
+ * this middleware will run if it detects an url that's using s query parameter with the given name,
+ * so if we hit an url with '/id' it'll run.
+ */
+app.param('id', function (req, res, next, id) {
+  
+  let framework = frameworks.filter((f) => f.id === id)[0];
+
+  if (framework) {
+    req.framework = framework;
+    next();
+  } else {
+    res.send();
+  }
+  
+});
 
 app.get('/frameworks', (req, res) => {
   res.json(frameworks);
@@ -54,6 +71,15 @@ app.put('/frameworks/:id', (req, res) =>  {
     res.json(framework);
   }
 
+});
+
+// Error Handler middleware
+app.use(function (err, req, res, next) {
+  console.log('err');
+  console.log(err);
+  if (err) {
+    res.status(500).send(err);
+  }
 });
 
 app.listen(3000);
