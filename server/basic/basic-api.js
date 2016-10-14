@@ -3,8 +3,22 @@ let express = require('express'),
     morgan = require('morgan'),
     app = express();
 
-let frameworks = [{name: 'angular2', id: '1'}, {name: 'react', id: '2'}],
+let frameworks = [],
    id = 0;
+
+/*
+ * checks if the body has an 'id' property then updates the id when creating new frameworks
+ */
+function updateId(req, res, next) {
+  console.log('req.body');
+  console.log(req.body);
+  if (!req.body.id) {
+    id +=1;
+    req.body.id = id + '';
+  }
+
+  next();
+}
 
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -40,16 +54,18 @@ app.get('/frameworks/:id', (req, res) => {
 
 });
 
-app.post('/frameworks', (req, res) =>  {
+/*
+ * you can run middlewares on routes before running the callback, so in this case,
+ * it will run updateId() which adds an 'id' property to the object in this case req.body,
+ * so when the callbacks is called, the object has already the 'id' property
+ */
+app.post('/frameworks', updateId, (req, res) =>  {
 
   let framework = req.body;
 
-  id += 1;
-
-  framework.id = id + ''; // coerce to string
-
   frameworks = [...frameworks, framework];
-
+  console.log('frameworks');
+  console.log(frameworks);
   res.json(framework);
 });
 
@@ -66,8 +82,6 @@ app.put('/frameworks/:id', (req, res) =>  {
     res.send();
   } else {
     frameworks[index] = framework;
-    console.log('frameworks');
-    console.log(frameworks);
     res.json(framework);
   }
 
