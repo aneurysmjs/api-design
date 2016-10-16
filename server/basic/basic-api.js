@@ -25,5 +25,4 @@ app.use(function (err, req, res, next) {
   }
 });
 
-app.listen(3000);
-console.log('on port 3000');
+module.exports = app; // we make the app exportable so it can be use by other apps

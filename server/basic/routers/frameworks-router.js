@@ -1,11 +1,14 @@
 let frameworksRouter = require('express').Router();
 
-let frameworks = [],
+let frameworks = [{
+     name: 'Angular2',
+     company: 'google',
+     id: '1'
+   }],
    id = 0;
 
 function updateId(req, res, next) {
-  console.log('req.body');
-  console.log(req.body);
+  
   if (!req.body.id) {
     id += 1;
     req.body.id = id + '';
@@ -44,8 +47,7 @@ frameworksRouter.route('/')
      let framework = req.body;
 
      frameworks = [...frameworks, framework];
-     console.log('frameworks');
-     console.log(frameworks);
+
      res.json(framework);
    });
 
@@ -88,6 +90,7 @@ frameworksRouter.route('/:id')
        ];
 
        res.json(framework);
+
      } else {
        res.send(new Error('fuck you'));
      }
