@@ -1,4 +1,9 @@
-var app = require('./server/basic/basic-api');
+'use strict';
 
-app.listen(3000);
-console.log('on port 3000');
+// config before any require
+let config = require('./server/config/config'),
+   app = require('./server/server'),
+   logger = require('./server/utils/logger');
+
+app.listen(config.port);
+console.log(`listening on port ${config.port}`);
